@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, FormGroup } from '@angular/forms';interface City {
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { SignupComponent } from 'src/app/signup/signup.component';
+
+
+
+interface City {
   name: string;
   code: string;
 }
@@ -20,13 +25,7 @@ export class HeaderComponent {
   selectedCity!: City;
 
   ngOnInit() {
-      this.cities = [
-          { name: 'New York', code: 'NY' },
-          { name: 'Rome', code: 'RM' },
-          { name: 'London', code: 'LDN' },
-          { name: 'Istanbul', code: 'IST' },
-          { name: 'Paris', code: 'PRS' }
-      ];
+
   }
 
   

@@ -14,6 +14,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComponentNameComponent } from './component-name/component-name.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    ComponentNameComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
