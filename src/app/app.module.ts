@@ -19,7 +19,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SinginComponent } from './auth/singin/singin.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +40,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

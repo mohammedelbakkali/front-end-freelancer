@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { MatDialogRef , MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -30,7 +32,10 @@ export class SignupComponent {
     private _fb :FormBuilder ,
     private _dialogRef:MatDialogRef<SignupComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
-    private service :AuthService
+    private service :AuthService,
+    private toastr:ToastrService,
+    private router:Router
+    
     ){
       this.valueForm = this._fb.group({
      
@@ -56,21 +61,32 @@ export class SignupComponent {
 
     setDataSubmit(){
          if(this.valueForm.valid){
-          this.user =  {
-            fullname: this.valueForm.value.fullname,
-            username: this.valueForm.value.username,
-            email: this.valueForm.value.email,
-            dateOfBirth: this.valueForm.value.dateOfBirth,
-            gender: this.valueForm.value.gender,
-            password :this.valueForm.value.password,
-          };
+
+          if(this.valueForm.value.password === this.valueForm.value.confirmepassword){
+            this.user =  {
+              fullname: this.valueForm.value.fullname,
+              username: this.valueForm.value.username,
+              email: this.valueForm.value.email,
+              dateOfBirth: this.valueForm.value.dateOfBirth,
+              gender: this.valueForm.value.gender,
+              password :this.valueForm.value.password,
+            };
+            
+            this.service.signUp(this.user).subscribe({
+                next:(res)=>{ 
+                  
+                  this.toastr.success('the account has been created')
+                  this.router.navigate([''])
+                  console.log(res);
+                },
+                error:(err)=>{console.log(err);}
+            })
+          }else {
+            this.toastr.error('password incorrect !');
+              
+                
+          }
           
-          this.service.signUp(this.user).subscribe({
-              next:(res)=>{
-                console.log(res);
-              },
-              error:(err)=>{console.log(err);}
-          })
 
           
          }
