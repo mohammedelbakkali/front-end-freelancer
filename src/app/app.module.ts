@@ -27,7 +27,7 @@ import { SinginComponent } from './auth/singin/singin.component';
     HomeComponent,
     ComponentNameComponent,
     SignupComponent,
-    SinginComponent
+    SinginComponent,
   ],
   imports: [
     BrowserModule,

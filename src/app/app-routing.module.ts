@@ -17,6 +17,10 @@ const routes: Routes = [
           loadChildren : ()=>import("./post/post.module").then((mod)=>mod.PostModule)
         },
         {
+          path:"account",
+          loadChildren : ()=>import("./account/account.module").then((mod)=>mod.AccountModule)
+        },
+        {
           path:"**",
           component:PageNotFoundComponent
         }

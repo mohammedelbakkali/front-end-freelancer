@@ -8,15 +8,15 @@
 
       <i class="bi bi-bell" ></i>
       <i class="bi bi-envelope" ></i>
-      <i class="bi bi-heart-fill "></i>
-      <a routerLink="">Orders</a>
+      <i class="bi" [ngClass]="value ? 'bi-heart ': 'bi-heart-fill'" (mouseover)="value=false" (mouseout)="value=true" ></i>
+      <a routerLink=""  onclick='fill()'>Orders</a>
       <a routerLink="">Switch to Selling</a>
      
       <img src="../../../assets/pics/profilepic.jpeg" class="profilepic" [matMenuTriggerFor]="menu">
       <mat-menu #menu="matMenu" class="menu">
         <div class="p-3 divide-y divide-solid">
           <div class="pb-1 flex justify-between">
-            <a routerLink="/" class="a">Profile</a>
+            <a routerLink="/account/profile" class="a">Profile</a>
           </div>
           <mat-divider class="pb-2"></mat-divider>
           <div class="pb-1 flex justify-between">
