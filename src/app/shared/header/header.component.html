@@ -6,14 +6,31 @@
       <span>Fiverr</span>
       <span class="example-spacer"></span>
 
-
-
+      <i class="bi bi-bell" ></i>
+      <i class="bi bi-envelope" ></i>
+      <i class="bi bi-heart-fill "></i>
       <a routerLink="">Orders</a>
+      <a routerLink="">Switch to Selling</a>
+     
+      <img src="../../../assets/pics/profilepic.jpeg" class="profilepic" [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu" class="menu">
+        <div class="p-3 divide-y divide-solid">
+          <div class="pb-1 flex justify-between">
+            <a routerLink="/" class="a">Profile</a>
+          </div>
+          <mat-divider class="pb-2"></mat-divider>
+          <div class="pb-1 flex justify-between">
+          <a routerLink="/" class="a">Settings</a> <br>
+          <a routerLink="/" class="a">Billing</a></div>
+          <mat-divider class="pt-2"></mat-divider>
+          <a routerLink="/" class="a">Log out</a>
+        </div>
+      </mat-menu>
 
 
-      <a (click)="openDialogSingUp()"> Sign in</a>
-      <button mat-stroked-button class="btn" (click)="openDialogSingIn()">Join</button>
-
-
+      <!-- <a (click)="openDialogSingIn()"> Sign in</a>
+      <button mat-stroked-button class="btn" (click)="openDialogSingUp()">Join</button> -->
+      
     </mat-toolbar>
 
+    

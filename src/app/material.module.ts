@@ -45,6 +45,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 
@@ -99,6 +101,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     PortalModule,
     ScrollingModule,
     DialogModule,
+    MatIconModule
   ]
 })
 export class MaterialExampleModule {}
