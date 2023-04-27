@@ -1,34 +1,48 @@
+$baseColor : #4361ee;
+
 .example-spacer {
     flex: 1 1 auto;
 }
 .navbar{
-  background-color: white;
+  background-color: #f3f2f2;
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+a{
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 16px;
+  color: #5f5f5f;
 }
 mat-toolbar{
-  a{
-    text-decoration: none;
-    margin-right: 30px;
-    font-size: 16px;
-    color: #3e3e3e;
-  }
   a:hover{
     transition: 0.3s;
-    color: #57cc7e;
+    color: $baseColor;
     cursor: pointer;
   }
   .btn{
     border-width: 5px;
-    border-color: #57cc7e;
-    color: #3e3e3e;
+    border-color: $baseColor;
+    color: #5f5f5f;
     transition: 0.3s;
     border-width: 1px;
-    border-color: #3e3e3e;
+    border-color: #5f5f5f;
   }
   .btn:hover{
-    background-color: #57cc7e;
+    background-color: $baseColor;
     color: #ffffff;
-    border-color: #57cc7e;
+    border-color: $baseColor;
     transition: 0.3s;
   }
-
+  .profilepic{
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+  }
+  .bi{
+    color: #5f5f5f;
+    margin-right: 25px;
+  }
 }
+

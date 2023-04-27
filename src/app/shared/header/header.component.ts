@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { SignupComponent } from 'src/app/auth/signup/signup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SinginComponent } from 'src/app/auth/singin/singin.component';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 interface City {
@@ -17,7 +18,7 @@ interface City {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  filmIcon = faWandMagicSparkles;
+  filmIcon = faHeart;
   formGroup! : FormGroup;
 
   constructor( private _fb :FormBuilder , public dialog: MatDialog ){}
