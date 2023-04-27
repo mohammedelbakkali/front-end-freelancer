@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import { Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { DialogRef } from '@angular/cdk/dialog';
 import { MatDialogRef , MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-interface Diplome {
-  value: string;
-  viewValue: string;
+interface user {
+  fullname: string;
+  username: string;
+  email: string;
+  dateOfBirth: Date;
+  gender: string;
+  password :string;
 }
 
-interface Mention {
-  value: string;
-  viewValue: string;
-}
+
 
 @Component({
   selector: 'app-signup',
@@ -25,18 +26,6 @@ export class SignupComponent {
   selectedValueMention!: string;
   empForm! : FormGroup;
 
-  educations: Diplome[] = [
-    {value: 'experience', viewValue: 'licence'},
-    {value: 'master', viewValue: 'master'},
-    {value: 'ingénieure', viewValue: 'ingénieure'},
-  ];
-
-  mentions : Mention[] = [
-    {value: 'passable', viewValue: 'passable'},
-    {value: 'assez_bien', viewValue: 'assez bien'},
-    {value: 'mention_bien', viewValue: 'mention bien'},
-    {value: 'mention_très_bien', viewValue: 'mention très bien'},
-  ];
 
     
   constructor(
@@ -46,15 +35,21 @@ export class SignupComponent {
     ){
    this.empForm = this._fb.group({
      
-         firstName:'',
-         lastName:'',
-         email:'',
-         dateOfBirth:'',
-         gender:'',
-         education:'',
-         mention:'',
-         salary:'',
-         experience:''
+         fullname:['', Validators.required],
+         username:['', Validators.required],
+         email:['', Validators.required , Validators.email],
+         dateOfBirth:['', Validators.required],
+         gender:['', Validators.required],
+         password:['', Validators.required , Validators.minLength(8)],
+         confirmepassword:['', Validators.required]
+
    })
   }
+
+    setDataSubmit(){
+          console.log(this.empForm.value);
+          
+    }
 }
+
+
