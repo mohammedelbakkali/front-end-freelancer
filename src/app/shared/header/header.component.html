@@ -1,14 +1,13 @@
 
-    <mat-toolbar color="primary">
+    <mat-toolbar class="navbar">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
      
       </button>
       <span>Fiverr</span>
       <span class="example-spacer"></span>
 
-
-      <button mat-button (click)="openDialogSingUp()">SignUp</button>
-      <button mat-button (click)="openDialogSingIn()">SignIn</button>
+      <a (click)="openDialogSingUp()"> Sign in</a>
+      <button mat-stroked-button class="btn" (click)="openDialogSingIn()">Join</button>
 
     </mat-toolbar>
 
