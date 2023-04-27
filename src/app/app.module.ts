@@ -17,8 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentNameComponent } from './component-name/component-name.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SinginComponent } from './auth/singin/singin.component';
+import { HttpClientModule } from '@angular/common/http';
 
-
+import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,11 @@ import { SinginComponent } from './auth/singin/singin.component';
     MatIconModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
