@@ -20,6 +20,8 @@ interface City {
 export class HeaderComponent {
   filmIcon = faHeart;
   formGroup! : FormGroup;
+  value:boolean = true;
+
 
   constructor( private _fb :FormBuilder , public dialog: MatDialog ){}
   cities!: City[];

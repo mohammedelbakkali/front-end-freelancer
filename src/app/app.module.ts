@@ -28,7 +28,7 @@ import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
     HomeComponent,
     ComponentNameComponent,
     SignupComponent,
-    SinginComponent
+    SinginComponent,
   ],
   imports: [
     BrowserModule,
