@@ -3,6 +3,7 @@ import { faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SignupComponent } from 'src/app/auth/signup/signup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SinginComponent } from 'src/app/auth/singin/singin.component';
 
 
 interface City {
@@ -33,7 +34,7 @@ export class HeaderComponent {
    }
 
    openDialogSingIn(){
-    const dialogRef = this.dialog.open(SignupComponent);
+    const dialogRef = this.dialog.open(SinginComponent);
    }
   
 }

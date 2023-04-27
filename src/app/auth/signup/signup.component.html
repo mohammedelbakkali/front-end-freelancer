@@ -1,7 +1,7 @@
 
 <div mat-dialog-title style="text-align: center;"> Join Gig-Hub </div>
 
-<form [formGroup]="empForm" >
+<form [formGroup]="empForm" (ngSubmit)="setDataSubmit()">
     <div mat-dialog-content class="content" >
                     
         <div class="row_form">
@@ -13,7 +13,6 @@
              <mat-form-field appearance="outline">
                <mat-label>Username</mat-label>
                <input  matInput placeholder="enter a username" formControlName="lastName">
-              
 
              </mat-form-field>
         </div>
@@ -54,7 +53,7 @@
       <div class="row_form">
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input  type="password" matInput placeholder="Password" formControlName="password">
+            <input  type="password" matInput placeholder="Choose a Password" formControlName="password">
             <mat-hint>8 characters or longer. Combine upper and lowercase letters and numbers.</mat-hint>
           </mat-form-field>
 
@@ -73,7 +72,7 @@
    
    <div mat-dialog-actions class="action">
         <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
-        <button mat-raised-button color="primary" type="submit">{{data ? "Update" : "Save"}}</button>
+        <button mat-raised-button color="primary" type="submit" >Sign Up</button>
    </div>
 
    <hr>

@@ -1,110 +1,49 @@
-<p>singin works!</p>
 
-<div mat-dialog-title>{{data ? "Update informations" : "Add Empolyee"}}</div>
+<div mat-dialog-title style="text-align: center;"> Sign In </div>
 
-<form [formGroup]="empForm" >
+<form [formGroup]="empForm">
     <div mat-dialog-content class="content" >
                     
-        <div class="row_form">
-           <mat-form-field appearance="outline">
-               <mat-label>First Name</mat-label>
-               <input  matInput placeholder="First Name" formControlName="firstName">
-             </mat-form-field>
-   
-             <mat-form-field appearance="outline">
-               <mat-label>last Name</mat-label>
-               <input  matInput placeholder="last Name" formControlName="lastName">
-             </mat-form-field>
-        </div>
+       
    
    
    
    
-        <div class="row_form">
+     
            <mat-form-field appearance="outline">
                <mat-label>Email</mat-label>
                <input type="email" matInput placeholder="exemple@gmail.com" formControlName="email">
              </mat-form-field>
    
-             <mat-form-field appearance="outline">
-               <mat-label>Date Of birth</mat-label>
-               <input matInput [matDatepicker]="dp3" formControlName="dateOfBirth">
-               <mat-hint>MM/DD/YYYY</mat-hint>
-               <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
-               <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-             </mat-form-field>
-        </div>
+        
    
-   
-        <!-- Option -->
-   
-        <div class="row_form">
-        <mat-radio-group aria-label="Select an option" formControlName="gender">
-           <mat-label>Gender</mat-label>
-           <mat-radio-button color= 'primary' value="male">Male</mat-radio-button>
-           <mat-radio-button color= 'primary' value="female">Female</mat-radio-button>
-           <mat-radio-button color= 'primary' value="other">Other</mat-radio-button>
-   
-         </mat-radio-group> 
-       </div>
-   
-      <!-- Select -->
-     
-          <div class="row_form">
-   
-           <mat-form-field appearance="outline">
-               <mat-label>Education</mat-label>
-               
-               <mat-select  formControlName="education">
-          
-                 <mat-option *ngFor="let education of educations" [value]="education.value">
-                           {{education.viewValue}}
-                 </mat-option>
-               </mat-select>
-              </mat-form-field>
-   
-             
-                
-              <mat-form-field appearance="outline">
-               <mat-label>Mention</mat-label>
-               
-               <mat-select   formControlName="mention"  > 
-          
-                 <mat-option *ngFor="let mention of mentions" [value]="mention.value" >
-                   {{mention.viewValue}}
-                 </mat-option>
-               </mat-select>
-              </mat-form-field>
-   
-   
-             
-   
-          </div>
-   
-   
-          <div class="row_form">
-   
-           <mat-form-field appearance="outline">
-               <mat-label>Experience(années)</mat-label>
-               <input  matInput placeholder="Ex: 2 " type="number" formControlName="experience">
-              </mat-form-field>
-   
-   
-   
-              <mat-form-field appearance="outline">
-               <mat-label>Salary</mat-label>
-               <input  matInput placeholder="Ex : 25000" type="number" formControlName="salary">
-               <mat-hint>  Dollar $</mat-hint>
-              </mat-form-field>
 
-          </div>
+
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input  type="password" matInput placeholder="Choose a Password" formControlName="password">
+          </mat-form-field>
+
+     
+        
    
+  
     
    
    </div>
    
    <div mat-dialog-actions class="action">
         <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
-        <button mat-raised-button color="primary" type="submit">{{data ? "Update" : "Save"}}</button>
+        <button mat-raised-button color="primary" type="submit" >Sign In</button>
    </div>
+
+   <hr>
+   <div>
+      <p style="text-align: center;">   Not a member yet? <a href="#">Join now</a></p>
+   </div>
+
+
+
+   
 </form>
