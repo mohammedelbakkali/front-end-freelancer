@@ -14,6 +14,7 @@ mat-toolbar{
   a:hover{
     transition: 0.3s;
     color: #57cc7e;
+    cursor: pointer;
   }
   .btn{
     border-width: 5px;
@@ -25,6 +26,7 @@ mat-toolbar{
   }
   .btn:hover{
     background-color: #57cc7e;
+    color: #ffffff;
     border-color: #57cc7e;
     transition: 0.3s;
   }
