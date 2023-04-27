@@ -1,18 +1,18 @@
 
 <div mat-dialog-title style="text-align: center;"> Join Gig-Hub </div>
 
-<form [formGroup]="empForm" (ngSubmit)="setDataSubmit()">
+<form [formGroup]="valueForm" (ngSubmit)="setDataSubmit()"  >
     <div mat-dialog-content class="content" >
                     
         <div class="row_form">
            <mat-form-field appearance="outline">
                <mat-label>Full Name</mat-label>
-               <input  matInput placeholder="enter your full name" formControlName="firstName">
+               <input  matInput placeholder="enter your full name" formControlName="fullname">
              </mat-form-field>
    
              <mat-form-field appearance="outline">
                <mat-label>Username</mat-label>
-               <input  matInput placeholder="enter a username" formControlName="lastName">
+               <input  matInput placeholder="enter a username" formControlName="username">
 
              </mat-form-field>
         </div>
@@ -53,18 +53,24 @@
       <div class="row_form">
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input  type="password" matInput placeholder="Choose a Password" formControlName="password">
+            <input  type="password" (change)="progressFunction()" matInput placeholder="Choose a Password" formControlName="password" [(ngModel)]="valuePassword">
             <mat-hint>8 characters or longer. Combine upper and lowercase letters and numbers.</mat-hint>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Conferme Password</mat-label>
-            <input type="password"  matInput placeholder="Conferme Password" formControlName="confirmepassword">
+            <input type="password" (change)="progressFunction()"  matInput placeholder="Conferme Password" formControlName="confirmepassword"  [(ngModel)]="valuePasswordConfirme">
           </mat-form-field>
+
+            <div class="row_form"> {{valuePassword}}</div>
+            <div class="row_form"> {{valuePasswordConfirme}}</div>
+
      </div>
      
-        
-   
+     <div class="row_form">
+
+     <mat-progress-bar mode="determinate" [value]="progress" ></mat-progress-bar>
+    </div>
   
     
    
