@@ -15,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentNameComponent } from './component-name/component-name.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SinginComponent } from './auth/singin/singin.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SignupComponent } from './signup/signup.component';
     PageNotFoundComponent,
     HomeComponent,
     ComponentNameComponent,
-    SignupComponent
+    SignupComponent,
+    SinginComponent
   ],
   imports: [
     BrowserModule,

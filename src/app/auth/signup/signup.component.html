@@ -1,0 +1,85 @@
+
+<div mat-dialog-title style="text-align: center;"> Join Gig-Hub </div>
+
+<form [formGroup]="empForm" >
+    <div mat-dialog-content class="content" >
+                    
+        <div class="row_form">
+           <mat-form-field appearance="outline">
+               <mat-label>full Name</mat-label>
+               <input  matInput placeholder="First Name" formControlName="firstName">
+             </mat-form-field>
+   
+             <mat-form-field appearance="outline">
+               <mat-label>User Name</mat-label>
+               <input  matInput placeholder="last Name" formControlName="lastName">
+              
+
+             </mat-form-field>
+        </div>
+   
+   
+   
+   
+        <div class="row_form">
+           <mat-form-field appearance="outline">
+               <mat-label>Email</mat-label>
+               <input type="email" matInput placeholder="exemple@gmail.com" formControlName="email">
+             </mat-form-field>
+   
+             <mat-form-field appearance="outline">
+               <mat-label>Date Of birth</mat-label>
+               <input matInput [matDatepicker]="dp3" formControlName="dateOfBirth">
+               <mat-hint>MM/DD/YYYY</mat-hint>
+               <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+               <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+             </mat-form-field>
+        </div>
+   
+   
+        <!-- Option -->
+   
+        <div class="row_form">
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+           <mat-label>Gender</mat-label>
+           <mat-radio-button color= 'primary' value="male">Male</mat-radio-button>
+           <mat-radio-button color= 'primary' value="female">Female</mat-radio-button>
+           <mat-radio-button color= 'primary' value="other">Other</mat-radio-button>
+   
+         </mat-radio-group> 
+       </div>
+   
+      <!-- Select -->
+
+      <div class="row_form">
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input  type="password" matInput placeholder="Password" formControlName="password">
+            <mat-hint>8 characters or longer. Combine upper and lowercase letters and numbers.</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Conferme Password</mat-label>
+            <input type="password"  matInput placeholder="Conferme Password" formControlName="confirmepassword">
+          </mat-form-field>
+     </div>
+     
+        
+   
+  
+    
+   
+   </div>
+   
+   <div mat-dialog-actions class="action">
+        <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? "Update" : "Save"}}</button>
+   </div>
+
+   <hr>
+   <div>
+      <p style="text-align: center;">Already a member? <a href="#">Sign In</a></p>
+   </div>
+
+
+</form>
