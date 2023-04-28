@@ -42,7 +42,7 @@ import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 4000,
       positionClass: 'toast-bottom-right'
     })
   ],

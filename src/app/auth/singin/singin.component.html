@@ -1,36 +1,22 @@
 
 <div mat-dialog-title style="text-align: center;"> Sign In </div>
 
-<form [formGroup]="empForm">
+<form [formGroup]="empForm" (ngSubmit)="setDataSubmit()">
     <div mat-dialog-content class="content" >
                     
-       
-   
-   
-   
-   
-     
+
            <mat-form-field appearance="outline">
                <mat-label>Email</mat-label>
                <input type="email" matInput placeholder="exemple@gmail.com" formControlName="email">
              </mat-form-field>
    
-        
-   
-
-
-    
+            
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input  type="password" matInput placeholder="Choose a Password" formControlName="password">
           </mat-form-field>
 
      
-        
-   
-  
-    
-   
    </div>
    
    <div mat-dialog-actions class="action">
