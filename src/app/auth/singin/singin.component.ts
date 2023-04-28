@@ -3,7 +3,8 @@ import { Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { DialogRef } from '@angular/cdk/dialog';
-import { MatDialogRef , MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef , MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { SignupComponent } from '../signup/signup.component';
 
 interface UserSignIn {
   email: string;
@@ -24,6 +25,7 @@ export class SinginComponent {
   constructor(
     private _fb :FormBuilder ,
     private _dialogRef:MatDialogRef<SinginComponent>,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data:any
     ){
    this.empForm = this._fb.group({
@@ -34,8 +36,14 @@ export class SinginComponent {
    })
   }
 
+
    setDataSubmit(){
        console.log(this.empForm.value);
    }
+
+
+  openDialogSingUp(){
+    const dialogRef = this.dialog.open(SignupComponent);
+  }
 
 }

@@ -11,11 +11,24 @@
 mat-form-field{
    width: 100%;
 }
-
+$baseColor : #4361ee;
 .action{
    padding: 0px 25px 20px;
+   a{
+      text-decoration: none;
+      margin-right: 20px;
+      font-size: 16px;
+      color: #5f5f5f;
+   }
+      a:hover{
+      transition: 0.3s;
+      color: $baseColor;
+      cursor: pointer;
+   }
 }
 
 .action > button{
    flex: 1;
 }
+
+

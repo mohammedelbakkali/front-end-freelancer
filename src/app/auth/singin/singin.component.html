@@ -5,18 +5,17 @@
     <div mat-dialog-content class="content" >
                     
 
-           <mat-form-field appearance="outline">
-               <mat-label>Email</mat-label>
-               <input type="email" matInput placeholder="exemple@gmail.com" formControlName="email">
-             </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Enter Your Email" formControlName="email">
+      </mat-form-field>
    
-            
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input  type="password" matInput placeholder="Choose a Password" formControlName="password">
-          </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input  type="password" matInput placeholder="Enter Your Password" formControlName="password">
+      </mat-form-field>
 
-     
+
    </div>
    
    <div mat-dialog-actions class="action">
@@ -26,7 +25,12 @@
 
    <hr>
    <div>
-      <p style="text-align: center;">   Not a member yet? <a href="#">Join now</a></p>
+      <p style="text-align: center;">   Not a member yet? 
+        <a 
+        (click)="openDialogSingUp()" 
+        [mat-dialog-close]="false" 
+        style="margin-right: 20px;font-size: 16px; color: #5f5f5f;"
+        >Join now</a></p>
    </div>
 
 
