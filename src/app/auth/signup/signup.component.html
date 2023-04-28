@@ -27,7 +27,7 @@
              </mat-form-field>
    
              <mat-form-field appearance="outline">
-               <mat-label>Date Of birth</mat-label>
+               <mat-label>Date Of Birth</mat-label>
                <input matInput [matDatepicker]="dp3" formControlName="dateOfBirth">
                <mat-hint>MM/DD/YYYY</mat-hint>
                <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
@@ -58,8 +58,8 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Conferme Password</mat-label>
-            <input type="password" (change)="progressFunction()"  matInput placeholder="Conferme Password" formControlName="confirmepassword"  [(ngModel)]="valuePasswordConfirme">
+            <mat-label>Confirm Password</mat-label>
+            <input type="password" (change)="progressFunction()"  matInput placeholder="Confirm Password" formControlName="confirmepassword"  [(ngModel)]="valuePasswordConfirme">
           </mat-form-field>
      </div>
      
@@ -79,8 +79,12 @@
 
    <hr>
    <div>
-      <p style="text-align: center;">Already a member? <a href="#">Sign In</a></p>
+      <p style="text-align: center;">Already a member? 
+        <a 
+        (click)="openDialogSingIn()" 
+        [mat-dialog-close]="false" 
+        style="margin-right: 20px;font-size: 16px; color: #5f5f5f;">
+        Sign In</a></p>
    </div>
-
 
 </form>

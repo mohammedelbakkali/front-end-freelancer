@@ -21,6 +21,8 @@ export class HeaderComponent {
   filmIcon = faHeart;
   formGroup! : FormGroup;
   value:boolean = true;
+  valueE:boolean = true;
+  valueB:boolean = true;
 
 
   constructor( private _fb :FormBuilder , public dialog: MatDialog ){}
@@ -34,11 +36,11 @@ export class HeaderComponent {
 
   openDialogSingUp(){
     const dialogRef = this.dialog.open(SignupComponent);
-   }
+  }
 
-   openDialogSingIn(){
+  openDialogSingIn(){
     const dialogRef = this.dialog.open(SinginComponent);
-   }
+  }
   
 }
 

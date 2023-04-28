@@ -1,15 +1,36 @@
 
     <mat-toolbar class="navbar">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-     
+      <button mat-button routerLink="/">
+        GigHub
       </button>
-      <span>Fiverr</span>
       <span class="example-spacer"></span>
 
-      <i class="bi bi-bell" ></i>
-      <i class="bi bi-envelope" ></i>
-      <i class="bi" [ngClass]="value ? 'bi-heart ': 'bi-heart-fill'" (mouseover)="value=false" (mouseout)="value=true" ></i>
-      <a routerLink=""  onclick='fill()'>Orders</a>
+
+      <!-- SIGNED USER -->
+      <i class="bi position-relative" 
+        [ngClass]="valueB ? 'bi-bell ': 'bi-bell-fill'" 
+        (mouseover)="valueB=false" 
+        (mouseout)="valueB=true" 
+      >
+        <span class="position-absolute mt-1  top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+              style="width:1px"
+        ></span>
+      </i>
+      <i class="bi position-relative" 
+        [ngClass]="valueE ? 'bi-envelope ': 'bi-envelope-fill'" 
+        (mouseover)="valueE=false" 
+        (mouseout)="valueE=true" 
+      >
+        <span class="position-absolute mt-1  top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+              style="width:1px"
+        ></span>
+      </i>
+      <i class="bi"
+        [ngClass]="value ? 'bi-heart ': 'bi-heart-fill'" 
+        (mouseover)="value=false" 
+        (mouseout)="value=true" 
+      ></i>
+      <a routerLink="">Orders</a>
       <a routerLink="">Switch to Selling</a>
      
       <img src="../../../assets/pics/profilepic.jpeg" class="profilepic" [matMenuTriggerFor]="menu">
@@ -28,9 +49,10 @@
       </mat-menu>
 
 
+      <!-- UNSIGNED USER -->
       <a (click)="openDialogSingIn()"> Sign in</a>
       <button mat-stroked-button class="btn" (click)="openDialogSingUp()">Join</button>
 
-
+    </mat-toolbar>
     
 
