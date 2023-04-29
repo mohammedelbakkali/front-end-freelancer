@@ -6,6 +6,7 @@ import { AccountComponent } from './account.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
+import { EditinfosComponent } from './editinfos/editinfos.component';
 import { MaterialExampleModule } from '../material.module';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MaterialExampleModule } from '../material.module';
     AccountComponent,
     ProfileComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    EditinfosComponent
   ],
   imports: [
     CommonModule,
