@@ -7,7 +7,9 @@
 
 
       <!-- SIGNED USER -->
-      <i class="bi position-relative" 
+      <i 
+        class="bi position-relative" 
+        *ngIf="isAuth"
         [ngClass]="valueB ? 'bi-bell ': 'bi-bell-fill'" 
         (mouseover)="valueB=false" 
         (mouseout)="valueB=true" 
@@ -16,7 +18,9 @@
               style="width:1px"
         ></span>
       </i>
-      <i class="bi position-relative" 
+      <i 
+        class="bi position-relative"
+        *ngIf="isAuth" 
         [ngClass]="valueE ? 'bi-envelope ': 'bi-envelope-fill'" 
         (mouseover)="valueE=false" 
         (mouseout)="valueE=true" 
@@ -25,15 +29,17 @@
               style="width:1px"
         ></span>
       </i>
-      <i class="bi"
+      <i 
+        
+        *ngIf="isAuth"class="bi"
         [ngClass]="value ? 'bi-heart ': 'bi-heart-fill'" 
         (mouseover)="value=false" 
         (mouseout)="value=true" 
       ></i>
-      <a routerLink="">Orders</a>
-      <a routerLink="">Switch to Selling</a>
+      <a routerLink="" *ngIf="isAuth" >Orders</a>
+      <a routerLink="" *ngIf="isAuth" >Switch to Selling</a>
      
-      <img src="../../../assets/pics/profilepic.jpeg" class="profilepic" [matMenuTriggerFor]="menu">
+      <img src="../../../assets/pics/profilepic.jpeg" class="profilepic" [matMenuTriggerFor]="menu" *ngIf="isAuth">
       <mat-menu #menu="matMenu" class="menu">
         <div class="p-3 divide-y divide-solid">
           <div class="pb-1 flex justify-between">
@@ -44,14 +50,14 @@
           <a routerLink="/" class="a">Settings</a> <br>
           <a routerLink="/" class="a">Billing</a></div>
           <mat-divider class="pt-2"></mat-divider>
-          <a routerLink="/" class="a">Log out</a>
+          <a routerLink="/" class="a" (click)="logOut()">Log out</a>
         </div>
       </mat-menu>
 
 
       <!-- UNSIGNED USER -->
-      <a (click)="openDialogSingIn()"> Sign in</a>
-      <button mat-stroked-button class="btn" (click)="openDialogSingUp()">Join</button>
+      <a (click)="openDialogSingIn()" *ngIf="!isAuth"> Sign in</a>
+      <button mat-stroked-button class="btn" (click)="openDialogSingUp()" *ngIf="!isAuth" >Join</button>
 
     </mat-toolbar>
     
