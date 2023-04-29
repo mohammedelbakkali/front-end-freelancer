@@ -18,7 +18,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  filmIcon = faHeart;
   formGroup! : FormGroup;
   value:boolean = true;
   valueE:boolean = true;

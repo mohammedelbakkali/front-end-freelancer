@@ -1,12 +1,70 @@
 <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-        <div class="card text-center my-5" style="width: 100%;">
+        <div class="card  my-5" style="width: 100%;">
             <div class="card-body">
-                <img src="../../../assets/pics/profilepic.jpeg" > <br>
-                <h5 class="card-title" style="display: inline-block;">Aya Hamza</h5> <i class="bi bi-pencil"></i>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-outline-secondary">Preview Fiverr Profile</a>
+                <div class="header text-center">
+                    <img src="../../../assets/pics/profilepic.jpeg" > <br>
+                    <h5 class="card-title" style="display: inline-block;">Aya Hamza</h5>
+                    <i class="bi bi-pencil text-muted"></i>
+                    <p class="text-muted"> @aiahamza</p>
+                    <a href="#" class="btn btn-outline-secondary">Preview GigHub Profile</a>
+                </div>
+
+                <mat-divider class="my-4"></mat-divider>
+
+                <div class="mx-5">
+                    <div class="user-stats text-muted">  
+                        <ul style="list-style-type: none;">
+                            <li class="my-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <i class="bi bi-geo-fill"></i>
+                                        <span >From</span>
+                                    </div>
+                                    <div class="col-6"></div>
+                                    <div class="col-3">  <b>Morocco</b> </div> 
+                                </div>  
+                            </li>
+                            <li class="my-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <i class="bi bi-person-fill"></i>
+                                        <span >Member since</span>
+                                    </div>
+                                    <div class="col-6"></div>
+                                    <div class="col-3"> <b>Mar 2023</b></div> 
+                                </div>  
+                            </li>
+                            <li class="my-3">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <i class="bi bi-clock-history"></i>
+                                        <span>Avg. Response Time</span>
+                                    </div>
+                                    <div class="col-5"></div>
+                                    <div class="col"><b>3 hours</b></div> 
+                                </div>   
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <div class="description">
+                        <div class="row">
+                            <div class="col"><b>Description </b> </div>
+                            <div class="col-6"></div>
+                            <div class="col">                           
+                                <a 
+                                    [hidden]="showEdit" 
+                                    (click)="toggleEdit()"
+                                >Edit Description</a> 
+                            </div>
+                        </div>
+                        <app-editinfos></app-editinfos>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>

@@ -6,18 +6,21 @@ import { AccountComponent } from './account.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
-
+import { EditinfosComponent } from './editinfos/editinfos.component';
+import { MaterialExampleModule } from '../material.module';
 
 @NgModule({
   declarations: [
     AccountComponent,
     ProfileComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    EditinfosComponent
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    MaterialExampleModule
   ]
 })
 export class AccountModule { }
