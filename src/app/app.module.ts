@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { UserModule } from './user/user.module';
-import { PostModule } from './post/post.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,7 +33,6 @@ import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    PostModule,
     BrowserAnimationsModule,
     MaterialExampleModule,
     MatIconModule,

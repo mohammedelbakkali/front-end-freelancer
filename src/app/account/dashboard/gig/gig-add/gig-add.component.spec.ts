@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditPostComponent } from './edit-post.component';
+import { GigAddComponent } from './gig-add.component';
 
-describe('EditPostComponent', () => {
-  let component: EditPostComponent;
-  let fixture: ComponentFixture<EditPostComponent>;
+describe('GigAddComponent', () => {
+  let component: GigAddComponent;
+  let fixture: ComponentFixture<GigAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditPostComponent ]
+      declarations: [ GigAddComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EditPostComponent);
+    fixture = TestBed.createComponent(GigAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

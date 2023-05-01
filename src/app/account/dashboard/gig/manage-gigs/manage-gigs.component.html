@@ -1,0 +1,22 @@
+
+
+<div class="container">
+    <div class="row">
+          <div class="col-col-2"></div>
+          <div class="col-col-8">
+           <div > <a mat-raised-button color="accent" routerLink="add_gig">CREATE A NEW GEG</a></div>
+            <hr>
+             <mat-tab-group fitInkBarToContent>
+                <mat-tab label="All Gigs" ><app-gig-list></app-gig-list></mat-tab>
+                <mat-tab label="Active"><app-gig-list></app-gig-list></mat-tab>
+                <mat-tab label="PENDING APPROVAL"><app-gig-list></app-gig-list></mat-tab>
+                <mat-tab label="DRAFT"><app-gig-list></app-gig-list></mat-tab>
+                <mat-tab label="DENIED" ><app-gig-list></app-gig-list></mat-tab>
+                
+              </mat-tab-group>
+
+
+          </div>  
+          <div class="col-col-2"></div>
+    </div>
+</div>

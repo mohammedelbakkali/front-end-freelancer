@@ -1,1 +1,34 @@
-<p>dashboard works!</p>
+<p>
+    <mat-toolbar style="justify-content: center;">
+
+
+          <button mat-button [matMenuTriggerFor]="menu"><span>My Business</span> <mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            
+            <button mat-menu-item>
+                <span>Orders</span>
+              </button>
+
+            <mat-divider></mat-divider>
+
+          
+              <!-- Gigs -->
+             
+                 <a  mat-menu-item routerLink="/account/dashboard/manage_gigs" class="a" >Gigs</a> 
+
+           
+
+            <button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>notifications_off</mat-icon>
+              <span>Disable alerts</span>
+            </button>
+          </mat-menu>
+  </mat-toolbar>
+  </p>
+
+  <router-outlet></router-outlet>

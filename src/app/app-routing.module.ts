@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './account/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -12,10 +13,7 @@ const routes: Routes = [
            path:"user",
            loadChildren : ()=>import("./user/user.module").then((mod)=>mod.UserModule)
          },
-         {
-          path:"post",
-          loadChildren : ()=>import("./post/post.module").then((mod)=>mod.PostModule)
-        },
+
         {
           path:"account",
           loadChildren : ()=>import("./account/account.module").then((mod)=>mod.AccountModule)
