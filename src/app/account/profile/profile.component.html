@@ -1,7 +1,5 @@
-<div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-        <div class="card  my-5" style="width: 100%;">
+
+        <div class="card  my-5">
             <div class="card-body">
                 <div class="header text-center">
                     <img src="../../../assets/pics/profilepic.jpeg" > <br>
@@ -51,23 +49,58 @@
                     
                     <mat-divider class="my-4"></mat-divider>
 
-                    <div class="description">
-                        <div class="row">
-                            <div class="col"><b>Description </b> </div>
-                            <div class="col-6"></div>
-                            <div class="col">                           
-                                <a 
-                                    [hidden]="showEdit" 
-                                    (click)="toggleEdit()"
-                                >Edit Description</a> 
-                            </div>
-                        </div>
-                        <app-editinfos></app-editinfos>
-                    </div>
-                </div>  
-            </div>
+
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              This is the expansion title
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              This is a summary of the content
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Input</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (opened)="panelOpenState = true"
+                                             (closed)="panelOpenState = false">
+                                             </mat-expansion-panel>
+                                             </mat-accordion>
+
+                      
+
+                                             <mat-accordion>
+                                                <mat-expansion-panel hideToggle>
+                                                  <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                     Email
+                                                    </mat-panel-title>
+                                                    <mat-panel-description>
+                                                        {{user.email}}
+                                                    </mat-panel-description>
+                                                  </mat-expansion-panel-header>
+                                                  <mat-form-field appearance="fill">
+                                                    <mat-label>Input</mat-label>
+                                                    <input matInput value={{user.email}}>
+                                                  </mat-form-field>
+                                                </mat-expansion-panel>
+                                                <mat-expansion-panel (opened)="panelOpenState = true"
+                                                                     (closed)="panelOpenState = false">
+                                                                     </mat-expansion-panel>
+                                                                     </mat-accordion>
+
+
+
+
+               
+           
+       
+
+        <div class="card align-items-center p-3">
+            <img src="../../../assets/pics/bs.jpg" style="width: 300px;">
+            <h5 style="font-weight: 700;" class="m-4">Ready to earn on your own terms?</h5>
+            <button mat-raised-button color="primary" style="width: 30%;">Become a Seller</button>
         </div>
-    </div>
-</div>
-
-

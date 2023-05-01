@@ -1,15 +1,12 @@
-<div *ngIf="showEdit" class="card">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <mat-label>Tell us about any of your hobbies, 
-                additional expertise, or anything else you'd like to add.
-            </mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+<div *ngIf="showEdit" class="card my-3">
+    <form>
+        <mat-form-field class="input">
+            <textarea matInput placeholder="Tell us about any of your hobbies, additional expertise, or anything else you'd like to add."></textarea>
         </mat-form-field>
-        <button 
+        <button class="btnn"
             mat-stroked-button
             (click)="toggleEdit()"
         >Cancel</button>
-        <button mat-raised-button color="primary">Update</button>
+        <button class="btnn" mat-raised-button color="primary" type="submit">Update</button>
     </form>
 </div>
