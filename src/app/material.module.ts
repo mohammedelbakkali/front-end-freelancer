@@ -50,6 +50,8 @@ import {MatIconModule} from '@angular/material/icon';
 
 
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -102,7 +104,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     PortalModule,
     ScrollingModule,
     DialogModule,
-    MatIconModule
+    MatIconModule,
+
+    FormsModule
   ]
 })
 export class MaterialExampleModule {}

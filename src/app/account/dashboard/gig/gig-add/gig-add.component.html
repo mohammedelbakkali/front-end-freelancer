@@ -1,0 +1,261 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+              {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+            </button> -->
+            <mat-stepper [linear]="isLinear" #stepper orientation="vertical">
+              <mat-step [stepControl]="firstFormGroup">
+                 <form [formGroup]="firstFormGroup">
+                     <ng-template matStepLabel>Overview</ng-template>
+                            <mat-card>
+                               <mat-card-content>
+                                 <mat-card-title>Gig title</mat-card-title>
+                                 <mat-card-subtitle>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</mat-card-subtitle>
+                                  <div class="row_form">                          
+                                     <mat-form-field appearance="fill" class="example-full-width">
+                                      <mat-label>Textarea</mat-label>
+                                      <textarea matInput></textarea>
+                                     </mat-form-field>
+                                  </div>
+                                               <hr>                     
+                                  <mat-card-title>Category</mat-card-title>
+                                  <mat-card-subtitle>Choose the category and sub-category most suitable for your Gig.</mat-card-subtitle>
+                                   <div class="row_form">
+                                       <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>SELECT CATEGORY</mat-label>
+                                          <mat-select>
+                                           <mat-option value="one">First option</mat-option>
+                                              <mat-option value="two">Second option</mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>SELECT SUBCATEGORY</mat-label>
+                        <mat-select>
+                      <mat-option value="one">First option</mat-option>
+                      <mat-option value="two">Second option</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+ </div> 
+
+ <hr>
+
+                       <mat-card-title>Positive keywords</mat-card-title>
+                       <mat-card-subtitle>Enter search terms you feel your buyers will use when looking for your service</mat-card-subtitle>
+
+
+
+                      <div class="row-form">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>Favorite Fruits</mat-label>
+                              <mat-chip-grid #chipGrid aria-label="Enter fruits">
+                                <mat-chip-row *ngFor="let fruit of fruits"
+                                              (removed)="remove(fruit)"
+                                              [editable]="true"
+                                              (edited)="edit(fruit, $event)"
+                                              [aria-description]="'press enter to edit ' + fruit.name">
+                                  {{fruit.name}}
+                                  <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+                                    <mat-icon>cancel</mat-icon>
+                                  </button>
+                                </mat-chip-row>
+                                <input placeholder="New fruit..."
+                                       [matChipInputFor]="chipGrid"
+                                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                       [matChipInputAddOnBlur]="addOnBlur"
+                                       (matChipInputTokenEnd)="add($event)"
+                                       formControlName="firstCtrl" required
+                                       
+                                       />
+                              </mat-chip-grid>
+                            </mat-form-field>
+
+                      </div>
+               
+
+
+                      </mat-card-content>
+                    </mat-card>
+
+                  
+
+                  <div>
+                    <button mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+
+              </mat-step>
+              <h4>Pricing</h4>
+              <mat-step [stepControl]="secondFormGroup" label="Pricing">
+                <form [formGroup]="secondFormGroup">
+                  <mat-card>
+                      <div class="alert alert-primary mt-4" role="alert">
+                          The scope of this service is to deliver buyers a functional website. Package prices should include predefined options at a minimum of $80 or they are very likely to receive less exposure in this category. Please move your Gig to another category if you do not offer this specific service.
+
+                        </div>
+                      <mat-card-content>
+
+                            <mat-tab-group>
+
+
+                              
+                              <mat-tab label="BASIC"> 
+
+
+                                  <div class="row_form">                          
+                               
+                                      <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Name your package</mat-label>
+                                        <input matInput>
+                                      </mat-form-field>
+            
+                                 </div>
+
+                                 <div class="row_form">                                
+                              <mat-form-field appearance="fill" class="example-full-width">
+                                  <mat-label>Describe the details of your offering</mat-label>
+                                  <textarea matInput></textarea>
+                                </mat-form-field>
+                              </div>
+                              <div class="row_form">  
+
+                              <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Delivery Time</mat-label>
+                                <mat-select>
+                              <mat-option value="one">First option</mat-option>
+                              <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" class="example-full-width">
+                                  <mat-label>Textarea</mat-label>
+                                  <input matInput type="number">
+                                </mat-form-field>
+
+                              </div>
+
+
+                              </mat-tab>
+                              <mat-tab label="STANDARD" disabled="false"> 
+
+
+                                  <div class="row_form">                          
+                               
+                                      <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Name your package</mat-label>
+                                        <input matInput>
+                                      </mat-form-field>
+            
+                                 </div>
+
+                                 <div class="row_form">                                
+                              <mat-form-field appearance="fill" class="example-full-width">
+                                  <mat-label>Describe the details of your offering</mat-label>
+                                  <textarea matInput></textarea>
+                                </mat-form-field>
+                              </div>
+                              <div class="row_form">   
+                              <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Delivery Time</mat-label>
+                                <mat-select>
+                              <mat-option value="one">First option</mat-option>
+                              <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                                </mat-form-field>
+                                   
+                                <mat-form-field appearance="fill" class="example-full-width">
+                                  <mat-label>Textarea</mat-label>
+                                  <input matInput type="number">
+                                </mat-form-field>
+
+                              </div>
+                              </mat-tab>
+                              <mat-tab label="PREMIUM"  disabled="false" >
+                                  <div class="row_form">                          
+                               
+                                      <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Name your package</mat-label>
+                                        <input matInput>
+                                      </mat-form-field>
+            
+                                 </div>
+
+                                 <div class="row_form">                                
+                              <mat-form-field appearance="fill" class="example-full-width">
+                                  <mat-label>Describe the details of your offering</mat-label>
+                                  <textarea matInput></textarea>
+                                </mat-form-field>
+                              </div>
+                              <div class="row_form">   
+                              <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Delivery Time</mat-label>
+                                <mat-select>
+                              <mat-option value="one">First option</mat-option>
+                              <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" class="example-full-width">
+                                  <mat-label>Textarea</mat-label>
+                                  <input matInput type="number">
+                                </mat-form-field>
+                              </div>
+                              </mat-tab>
+                            </mat-tab-group>
+                             
+                              
+
+                      </mat-card-content>
+                    </mat-card>
+
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+            
+              <mat-step>
+                  <ng-template matStepLabel>Description & FAQ</ng-template>
+                     <h4 class="mt-4">Description</h4>
+                     <p>Briefly Describe Your Gig</p>
+                     <hr>
+                  <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
+
+
+
+                  <div>
+                      <button mat-button matStepperNext>Next</button>
+
+                  </div>
+                </mat-step>
+
+
+
+              <mat-step>
+
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+              </mat-step>
+            </mat-stepper>
+        </div>
+        <div class="col-md-2">
+          <div class="alert alert-info mt-5" style="width: 100%;" role="alert">
+               
+                    <h5>Describe your Gig.</h5>
+                       <span>This is your Gig title. Choose wisely, you can only use 80 characters</span>
+              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                  <span class="visually-hidden">New alerts</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-icon>home</mat-icon>

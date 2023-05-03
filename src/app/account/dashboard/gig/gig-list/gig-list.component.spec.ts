@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddPostComponent } from './add-post.component';
+import { GigListComponent } from './gig-list.component';
 
-describe('AddPostComponent', () => {
-  let component: AddPostComponent;
-  let fixture: ComponentFixture<AddPostComponent>;
+describe('GigListComponent', () => {
+  let component: GigListComponent;
+  let fixture: ComponentFixture<GigListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddPostComponent ]
+      declarations: [ GigListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddPostComponent);
+    fixture = TestBed.createComponent(GigListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
