@@ -3,9 +3,13 @@
             <div class="card-body">
                 <div class="header text-center">
                     <img src="../../../assets/pics/profilepic.jpeg" > <br>
-                    <h5 class="card-title" style="display: inline-block;">Aya Hamza</h5>
-                    <i class="bi bi-pencil text-muted"></i>
-                    <p class="text-muted"> @aiahamza</p>
+                    <h5 class="card-title" style="display: inline-block;">{{user.fullname}}</h5>
+                    <i   
+                      (click)="openDialog()"
+                      matTooltip="Change display name"
+                      class="bi bi-pencil text-muted"
+                      style="cursor: pointer;"></i>
+                    <p class="text-muted">{{user.username}}</p>
                     <a href="#" class="btn btn-outline-secondary">Preview GigHub Profile</a>
                 </div>
 
@@ -54,7 +58,7 @@
                         <mat-expansion-panel hideToggle>
                           <mat-expansion-panel-header>
                             <mat-panel-title>
-                              This is the expansion title
+                              Description
                             </mat-panel-title>
                             <mat-panel-description>
                               This is a summary of the content
@@ -67,30 +71,30 @@
                         </mat-expansion-panel>
                         <mat-expansion-panel (opened)="panelOpenState = true"
                                              (closed)="panelOpenState = false">
-                                             </mat-expansion-panel>
-                                             </mat-accordion>
+                        </mat-expansion-panel>
+                      </mat-accordion>
 
                       
 
-                                             <mat-accordion>
-                                                <mat-expansion-panel hideToggle>
-                                                  <mat-expansion-panel-header>
-                                                    <mat-panel-title>
-                                                     Email
-                                                    </mat-panel-title>
-                                                    <mat-panel-description>
-                                                        {{user.email}}
-                                                    </mat-panel-description>
-                                                  </mat-expansion-panel-header>
-                                                  <mat-form-field appearance="fill">
-                                                    <mat-label>Input</mat-label>
-                                                    <input matInput value={{user.email}}>
-                                                  </mat-form-field>
-                                                </mat-expansion-panel>
-                                                <mat-expansion-panel (opened)="panelOpenState = true"
-                                                                     (closed)="panelOpenState = false">
-                                                                     </mat-expansion-panel>
-                                                                     </mat-accordion>
+                      <mat-accordion>
+                          <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Email
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                  {{user.email}}
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <mat-form-field appearance="fill">
+                              <mat-label>Input</mat-label>
+                              <input matInput value={{user.email}}>
+                            </mat-form-field>
+                          </mat-expansion-panel>
+                          <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                        </mat-expansion-panel>
+                      </mat-accordion>
 
 
 

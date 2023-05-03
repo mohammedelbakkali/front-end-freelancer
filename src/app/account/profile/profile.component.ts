@@ -3,6 +3,8 @@ import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { Profile } from 'src/app/models/profile.model';
+import { MatDialog } from '@angular/material/dialog';
+import { EditinfosComponent } from '../editinfos/editinfos.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,14 +23,19 @@ export class ProfileComponent  implements OnInit {
   };
 
   constructor( 
-    private uiService: UiService, private userService: UserService
-  ){ 
-
-
-
-                                        
-  }
+    private uiService: UiService, 
+    private userService: UserService,
+    public dialog: MatDialog
+  ){}
   
+
+  openDialog() {
+    this.dialog.open(EditinfosComponent,{
+      data:{
+        user:this.user.fullname
+      }
+    });
+  }
 
 
   ngOnInit(): void {
