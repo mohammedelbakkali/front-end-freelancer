@@ -2,19 +2,37 @@
         <div class="card  my-5">
             <div class="card-body">
                 <div class="header text-center">
-                    <img src="../../../assets/pics/profilepic.jpeg" > <br>
-                    <h5 class="card-title" style="display: inline-block;">{{user.fullname}}</h5>
-                    <i   
-                      (click)="openDialog()"
+                    <img src="../../../assets/pics/profilepic.jpeg" class="mb-4"> <br>
+
+
+                    <mat-form-field appearance="outline">
+                      <form (ngSubmit)="UpdateData()">
+                        <input  type="text" 
+                                matInput 
+                                value={{user.fullname}} 
+                                [disabled]="dispaly"
+                                name="data" 
+                                 
+                        >
+                      </form>
+                    </mat-form-field>
+                    <div class="div">
+                    <i
+                      (click)="dispalyFunction()"
                       matTooltip="Change display name"
-                      class="bi bi-pencil text-muted"
-                      style="cursor: pointer;"></i>
-                    <p class="text-muted">{{user.username}}</p>
+                      class="bi text-muted" 
+                      [ngClass]="value ? 'bi-pencil ': 'bi-check2-circle'"
+                      style="cursor: pointer;"
+                      (click)="value=!value"
+                    ></i>
+                    <p class="text-muted">@{{user.username}} </p>
+                    </div>
+                    
                     <a href="#" class="btn btn-outline-secondary">Preview GigHub Profile</a>
                 </div>
 
                 <mat-divider class="my-4"></mat-divider>
-
+                
                 <div class="mx-5">
                     <div class="user-stats text-muted">  
                         <ul style="list-style-type: none;">
@@ -55,56 +73,132 @@
 
 
                     <mat-accordion>
+
                         <mat-expansion-panel hideToggle>
                           <mat-expansion-panel-header>
                             <mat-panel-title>
                               Description
                             </mat-panel-title>
-                            <mat-panel-description>
-                              This is a summary of the content
-                            </mat-panel-description>
+                            
                           </mat-expansion-panel-header>
-                          <mat-form-field appearance="fill">
-                            <mat-label>Input</mat-label>
-                            <input matInput>
-                          </mat-form-field>
+                        <form class="add-form" [formGroup]="valueForm" (ngSubmit)="UpdateData()">
+                            <mat-form-field appearance="outline">
+                              <input matInput 
+                                    type="text" 
+                                    name="description" 
+                                    formControlName="description"
+                                    placeholder="Please tell us about any hobbies, additional expertise, or anything else you'd like to add." 
+                                    value="{{user.description}}">
+                            </mat-form-field>
+                            <input type="submit" value="Save" class="btn">
+                          </form>
+                          
                         </mat-expansion-panel>
-                        <mat-expansion-panel (opened)="panelOpenState = true"
-                                             (closed)="panelOpenState = false">
-                        </mat-expansion-panel>
-                      </mat-accordion>
+                       
+                      
 
                       
 
-                      <mat-accordion>
+                      
                           <mat-expansion-panel hideToggle>
                             <mat-expansion-panel-header>
                               <mat-panel-title>
-                                Email
+                                Languages
                               </mat-panel-title>
-                              <mat-panel-description>
-                                  {{user.email}}
-                              </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <mat-form-field appearance="fill">
-                              <mat-label>Input</mat-label>
-                              <input matInput value={{user.email}}>
-                            </mat-form-field>
+
+                            <!-- <li *ngFor="let user of user.languages">{{ user.language }}</li> -->
+
+                            <form class="add-form" (ngSubmit)="UpdateData()">
+                              <mat-form-field appearance="outline">
+                                <input matInput 
+                                      type="text" 
+                                      name="data" 
+                                      placeholder="Add a language" >
+                              </mat-form-field>
+                              <mat-form-field appearance="outline">
+                                  <mat-label>Level</mat-label>
+                                  <mat-select>
+                                    <mat-option *ngFor="let opt of user.languages" [value]="opt.level">
+                                      {{opt.level}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              <input type="submit" value="Save" class="btn">
+                            </form>
                           </mat-expansion-panel>
-                          <mat-expansion-panel (opened)="panelOpenState = true"
-                                                (closed)="panelOpenState = false">
+                          
+                      
+
+                      
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Skills
+                            </mat-panel-title>
+                            
+                          </mat-expansion-panel-header>
+                          <form class="add-form" (ngSubmit)="UpdateData()">
+                            <mat-form-field appearance="outline">
+                              <input matInput 
+                                    type="text" 
+                                    name="data" 
+                                    placeholder="Add a skill" 
+                                    value="{{user.description}}">
+                            </mat-form-field>
+                            <input type="submit" value="Save" class="btn">
+
+                          </form>
                         </mat-expansion-panel>
-                      </mat-accordion>
+                       
+                    
 
+                    
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Education
+                          </mat-panel-title>
+                          
+                        </mat-expansion-panel-header>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Input</mat-label>
+                          <input matInput value={{user.email}}>
+                        </mat-form-field>
+                      </mat-expansion-panel>
+                     
+                  
 
+                  
+                    <mat-expansion-panel hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Certification
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Input</mat-label>
+                        <input matInput value={{user.email}}>
+                      </mat-form-field>
+                    </mat-expansion-panel>
+                   
+                </mat-accordion>
 
 
                
            
        
 
-        <div class="card align-items-center p-3">
-            <img src="../../../assets/pics/bs.jpg" style="width: 300px;">
-            <h5 style="font-weight: 700;" class="m-4">Ready to earn on your own terms?</h5>
-            <button mat-raised-button color="primary" style="width: 30%;">Become a Seller</button>
+        
+              </div>
         </div>
+  </div>
+
+  <div class="card align-items-center p-3">
+    <img src="../../../assets/pics/bs.jpg" style="width: 300px;">
+    <h5 style="font-weight: 700;" class="m-4">Ready to earn on your own terms?</h5>
+    <button mat-raised-button color="primary" style="width: 30%;">Become a Seller</button>
+  </div>

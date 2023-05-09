@@ -1,10 +1,8 @@
 import { Component, OnInit  } from '@angular/core';
-import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
-import { Profile } from 'src/app/models/profile.model';
-import { MatDialog } from '@angular/material/dialog';
-import { EditinfosComponent } from '../editinfos/editinfos.component';
+import { User } from 'src/app/models/user.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,29 +12,42 @@ export class ProfileComponent  implements OnInit {
   showEdit!: boolean;
   subscription!: Subscription;
   panelOpenState = false;
-  user : Profile = {
-    fullname: '',
-    username: '',
-    email: '',
-    dateOfBirth:'',
+  dispaly = true;
+  value: boolean = true;
+  valueForm! : FormGroup;
+  
+  user: User={
+    fullname:'',
+    username:'',
+    email:'',
+    dateOfBirth: new Date,
     gender: '',
+    password: '',
+    description:'',
   };
+ 
+
+
+
+
 
   constructor( 
-    private uiService: UiService, 
-    private userService: UserService,
-    public dialog: MatDialog
-  ){}
-  
-
-  openDialog() {
-    this.dialog.open(EditinfosComponent,{
-      data:{
-        user:this.user.fullname
-      }
-    });
+    private userService: UserService,private _fb :FormBuilder ,
+  ){
+    this.valueForm = this._fb.group({
+      description:''
+    })
   }
 
+  
+  dispalyFunction()
+  {
+    this.dispaly=!this.dispaly;
+  }
+  
+  
+
+  id = localStorage.getItem('id')
 
   ngOnInit(): void {
     this.userService.getProfile(localStorage.getItem('id')).subscribe({
@@ -47,8 +58,16 @@ export class ProfileComponent  implements OnInit {
             email: res.user.email,
             dateOfBirth: res.user.dateOfBirth,
             gender: res.user.gender,
-          } ;
-          console.log(this.user )
+            password: res.user.password,
+            description:res.user.description,
+            languages:res.user.languages,
+            skills:res.user.skills,
+            education:res.user.education,
+            certification:res.user.certification,
+
+          }
+          
+          
       },
       error:(err)=>{
          console.log(err)
@@ -57,6 +76,30 @@ export class ProfileComponent  implements OnInit {
 
   }
 
+  UpdateData(){
+    if(!this.valueForm.valid){
+      alert("Please enter a description");
+      return ;
+    }
+    const newDesc = {
+      description: this.valueForm.value.description
+    }
 
+  this.addData(newDesc);
+  }
+  addData(desc: any) {
+    this.userService.updateDesc(this.id, desc).subscribe(
+      (res)=>{
+        console.log('User profile updated successfully');
+        console.log(res); // Log the updated user profile data
+      },
+      (err) => {
+        console.log('Error updating user profile');
+        console.log(err);
+      }
+    );
+  }
 
+  
+  
 }
