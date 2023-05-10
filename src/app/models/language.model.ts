@@ -1,8 +1,9 @@
 import { User } from "./user.model";
 
 export interface language {
-    language: string;
-    level:number;   
-    user : User
+    name: string;
+    level:string;   
+    userId : string;
+    _id:any;
 }
 

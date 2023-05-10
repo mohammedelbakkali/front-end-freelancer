@@ -24,6 +24,8 @@ export class UserService {
       return this._http.get(this.api +"/"+id ,httpOptions);
   }
 
+
+ // =============================== DESCRIPTION SERVICE ==================================
   updateDesc(id :any, desc:  { description: string; } ){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -33,4 +35,23 @@ export class UserService {
     };
     return this._http.patch(this.api+"/"+id, desc , httpOptions);
   }
+
+ // =============================== LANGUAGE SERVICES ==================================
+  addlan(data:any){
+     return this._http.post('http://localhost:4000/language/',data);
+  }
+
+  updatelan(data:any , id:any){
+    return this._http.patch('http://localhost:4000/language/'+id,data);
+ }
+
+  deletelan(id:any){
+    return this._http.delete('http://localhost:4000/language/'+id);
+  }
+
+
+
+
+
+
 }
