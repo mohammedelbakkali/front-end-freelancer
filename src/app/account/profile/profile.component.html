@@ -2,15 +2,37 @@
         <div class="card  my-5">
             <div class="card-body">
                 <div class="header text-center">
-                    <img src="../../../assets/pics/profilepic.jpeg" > <br>
-                    <h5 class="card-title" style="display: inline-block;">Aya Hamza</h5>
-                    <i class="bi bi-pencil text-muted"></i>
-                    <p class="text-muted"> @aiahamza</p>
+                    <img src="../../../assets/pics/profilepic.jpeg" class="mb-4"> <br>
+
+
+                    <mat-form-field appearance="outline">
+                      <form (ngSubmit)="UpdateData()">
+                        <input  type="text" 
+                                matInput 
+                                value={{user.fullname}} 
+                                [disabled]="dispaly"
+                                name="data" 
+                                 
+                        >
+                      </form>
+                    </mat-form-field>
+                    <div class="div">
+                    <i
+                      (click)="dispalyFunction()"
+                      matTooltip="Change display name"
+                      class="bi text-muted" 
+                      [ngClass]="value ? 'bi-pencil ': 'bi-check2-circle'"
+                      style="cursor: pointer;"
+                      (click)="value=!value"
+                    ></i>
+                    <p class="text-muted">@{{user.username}} </p>
+                    </div>
+                    
                     <a href="#" class="btn btn-outline-secondary">Preview GigHub Profile</a>
                 </div>
 
                 <mat-divider class="my-4"></mat-divider>
-
+                
                 <div class="mx-5">
                     <div class="user-stats text-muted">  
                         <ul style="list-style-type: none;">
@@ -51,56 +73,254 @@
 
 
                     <mat-accordion>
+
                         <mat-expansion-panel hideToggle>
                           <mat-expansion-panel-header>
                             <mat-panel-title>
-                              This is the expansion title
+                              Description
                             </mat-panel-title>
-                            <mat-panel-description>
-                              This is a summary of the content
-                            </mat-panel-description>
                           </mat-expansion-panel-header>
-                          <mat-form-field appearance="fill">
-                            <mat-label>Input</mat-label>
-                            <input matInput>
-                          </mat-form-field>
+                          <a style="float: right; cursor:pointer" (click)="formDisplay=false"
+                          *ngIf="user.description; else elseBlock"
+                          >Edit Description</a>
+                          <ng-template #elseBlock>
+                            <a style="float: right; cursor:pointer" (click)="formDisplay=false"
+                            >Add Description</a>
+                          </ng-template>
+                          <p class="my-4" [hidden]="!formDisplay">{{user.description}}</p>
+                          <form class="add-form" 
+                                [formGroup]="valueForm1" 
+                                (ngSubmit)="UpdateData()" 
+                                [hidden]="formDisplay"
+                              >
+                              <div class="row_form">
+                              <mat-form-field appearance="outline" style=" width: 100%;">                                
+                                <textarea matInput
+              
+                                    type="text" 
+                                    name="description" 
+                                    formControlName="description"
+                                    placeholder="Please tell us about any hobbies, additional expertise, or anything else you'd like to add." 
+                                    value="{{user.description}}">
+                                  </textarea>
+                            </mat-form-field>
+
+                              </div>
+
+                            <input type="submit" value="Save" class="btn" (click)="formDisplay=true">
+                          </form>
+
                         </mat-expansion-panel>
-                        <mat-expansion-panel (opened)="panelOpenState = true"
-                                             (closed)="panelOpenState = false">
-                                             </mat-expansion-panel>
-                                             </mat-accordion>
+                       
+                      
 
                       
 
-                                             <mat-accordion>
-                                                <mat-expansion-panel hideToggle>
-                                                  <mat-expansion-panel-header>
-                                                    <mat-panel-title>
-                                                     Email
-                                                    </mat-panel-title>
-                                                    <mat-panel-description>
-                                                        {{user.email}}
-                                                    </mat-panel-description>
-                                                  </mat-expansion-panel-header>
-                                                  <mat-form-field appearance="fill">
-                                                    <mat-label>Input</mat-label>
-                                                    <input matInput value={{user.email}}>
-                                                  </mat-form-field>
-                                                </mat-expansion-panel>
-                                                <mat-expansion-panel (opened)="panelOpenState = true"
-                                                                     (closed)="panelOpenState = false">
-                                                                     </mat-expansion-panel>
-                                                                     </mat-accordion>
+                      
+                          <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Languages
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
 
+                            <a style="float: right; cursor:pointer" (click)="displayFormAdd()"
+                            >Add New</a>
+                            <mat-list *ngFor="let lang of user.languages ">
+                              <mat-list-item>{{ lang.name }} 
+                                <span class="text-muted">{{ lang.level }}</span>
+                                <i class="bi bi-pencil" style="cursor: pointer; margin: 10px " (click)="displayFormEdit(lang._id)"> </i>
+                                <i class="bi bi-trash3" style="cursor: pointer; margin: 10px " (click)="deleteLanguage(lang._id)"></i>
+                                
+                              </mat-list-item>
+        
+                              <mat-divider></mat-divider>
+                            </mat-list>
 
+                            <form class="add-form" 
+                                  [formGroup]="valueForm2" 
+                                  (ngSubmit)="operationLang ? addLang() : updateLanguage()"
+                                  *ngIf="!formDisplay1"
+                                  >
+                              <mat-form-field appearance="outline">
+                                <input matInput 
+                                      type="text" 
+                                      name="data" 
+                                      formControlName="name"
+                                      placeholder="Add a language" 
+                                      value ="operationLang ? '' : 'hey' "
+                                     >
+                              </mat-form-field>
+                              <mat-form-field appearance="outline">
+                                <mat-label>Level</mat-label>
+                                <select matNativeControl formControlName="level" >
+                                  <option value="basic">Basic</option>
+                                  <option value="conversational">Conversational</option>
+                                  <option value="fluent">Fluent</option>
+                                  <option value="bilingual">Bilingual</option>
+                                </select>
+                              </mat-form-field>
+                              <input type="submit" [value]="operationLang ? add : update " class="btn" >
+                            </form>
+                          </mat-expansion-panel>
+                          
+                      
+
+                      
+                        <mat-expansion-panel hideToggle>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Skills
+                            </mat-panel-title>
+                            
+                          </mat-expansion-panel-header>
+                          <a style="float: right; cursor:pointer" (click)="displayFormAdd()"
+                            >Add New</a>
+                          <mat-list *ngFor="let lang of user.languages ">
+                            <mat-list-item>{{ lang.name }} 
+                              <span class="text-muted">{{ lang.level }}</span>
+                              <i class="bi bi-pencil" style="cursor: pointer; margin: 10px " (click)="displayFormEdit(lang._id)"> </i>
+                              <i class="bi bi-trash3" style="cursor: pointer; margin: 10px " (click)="deleteLanguage(lang._id)"></i>
+                              
+                            </mat-list-item>
+      
+                            <mat-divider></mat-divider>
+                          </mat-list>
+
+                          <form class="add-form" 
+                                [formGroup]="valueForm3" 
+                                (ngSubmit)="operationLang ? addLang() : updateLanguage()"
+                                *ngIf="!formDisplay"
+                                >
+                            <mat-form-field appearance="outline">
+                              <input matInput 
+                                    type="text" 
+                                    name="data" 
+                                    formControlName="name"
+                                    placeholder="Add skill" 
+                                    [value] ="operationLang ? '' : 'hey' "
+                                   >
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                              <mat-label>Level</mat-label>
+                              <select matNativeControl formControlName="level" >
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="expert">Expert</option>
+                              </select>
+                            </mat-form-field>
+                            <input type="submit" [value]="operationLang ? add : update " class="btn" >
+                          </form>
+                        </mat-expansion-panel>
+                       
+                    
+
+                    
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Education
+                          </mat-panel-title>
+                          
+                        </mat-expansion-panel-header>
+                        <a style="float: right; cursor:pointer" (click)="displayFormAdd()"
+                            >Add New</a>
+                          <mat-list *ngFor="let lang of user.languages ">
+                            <mat-list-item>{{ lang.name }} 
+                              <span class="text-muted">{{ lang.level }}</span>
+                              <i class="bi bi-pencil" style="cursor: pointer; margin: 10px " (click)="displayFormEdit(lang._id)"> </i>
+                              <i class="bi bi-trash3" style="cursor: pointer; margin: 10px " (click)="deleteLanguage(lang._id)"></i>
+                              
+                            </mat-list-item>
+      
+                            <mat-divider></mat-divider>
+                          </mat-list>
+
+                          <form class="add-form" 
+                                [formGroup]="valueForm3" 
+                                (ngSubmit)="operationLang ? addLang() : updateLanguage()"
+                                *ngIf="!formDisplay1"
+                                >
+                            <mat-form-field appearance="outline">
+                              <input matInput 
+                                    type="text" 
+                                    name="data" 
+                                    formControlName="country"
+                                    placeholder="Country of college/university" 
+                                    [value] ="operationLang ? '' : 'hey' "
+                                   >
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                              <input matInput 
+                                    type="text" 
+                                    name="data" 
+                                    formControlName="country"
+                                    placeholder="College/university name" 
+                                    [value] ="operationLang ? '' : 'hey' "
+                                   >
+                            </mat-form-field>
+                            <table class="example-full-width" cellspacing="0"><tr>
+                              <td>
+                                <mat-form-field appearance="outline">
+                                  <mat-label>Title</mat-label>
+                                  <select matNativeControl formControlName="level" >
+                                    <option value="baccalaureate">Baccalaureate</option>
+                                    <option value="deust">DEUST</option>
+                                    <option value="licence">Licence</option>
+                                    <option value="master">Master</option>
+                                    <option value="doctorat">Doctorat</option>
+                                  </select>
+                                </mat-form-field>
+                              </td>
+                              <td>
+                                <mat-form-field appearance="outline">
+                                  <input matInput 
+                                        type="text" 
+                                        name="data" 
+                                        formControlName="country"
+                                        placeholder="Major" 
+                                        [value] ="operationLang ? '' : 'hey' "
+                                       >
+                                </mat-form-field>
+                              </td>
+                            </tr></table>
+                            
+                            <input type="submit" [value]="operationLang ? add : update " class="btn" >
+                          </form>
+                      </mat-expansion-panel>
+                     
+                  
+
+                  
+                    <mat-expansion-panel hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Certification
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Input</mat-label>
+                        <input matInput value={{user.email}}>
+                      </mat-form-field>
+                    </mat-expansion-panel>
+                   
+                </mat-accordion>
 
 
                
            
        
 
-        <div class="card align-items-center p-3">
-            <img src="../../../assets/pics/bs.jpg" style="width: 300px;">
-            <h5 style="font-weight: 700;" class="m-4">Ready to earn on your own terms?</h5>
-            <button mat-raised-button color="primary" style="width: 30%;">Become a Seller</button>
+        
+              </div>
         </div>
+  </div>
+
+  <div class="card align-items-center p-3">
+    <img src="../../../assets/pics/bs.jpg" style="width: 300px;">
+    <h5 style="font-weight: 700;" class="m-4">Ready to earn on your own terms?</h5>
+    <button mat-raised-button color="primary" style="width: 30%;">Become a Seller</button>
+  </div>

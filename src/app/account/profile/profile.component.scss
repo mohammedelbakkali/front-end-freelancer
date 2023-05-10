@@ -1,6 +1,10 @@
 .card{
     margin:10px auto;
     width: 70%;
+    .div{
+        display: inline;
+        
+    }
 }
 
 .card-body{
@@ -20,8 +24,19 @@
         font-size: 16px;
         color: #5f5f5f;
       }
+      .add-form{
+        width: fit-content;
+       
+      }
+      .mat-mdc-form-field-infix {
+        width: 1000px;
+    }
 }
 
-.mat-mdc-form-field + .mat-mdc-form-field {
-    margin-left: 8px;
-  }
+.row_form{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+ }
+
+

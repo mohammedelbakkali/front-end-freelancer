@@ -8,16 +8,5 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./editinfos.component.scss']
 })
 export class EditinfosComponent {
-  showEdit!: boolean;
-  subscription: Subscription;
-
-  constructor(private uiService:UiService){
-    this.subscription = this.uiService.onToggle()
-                                      .subscribe(
-                                          value=> this.showEdit = value
-                                      );
-  }
-  toggleEdit() {
-    this.uiService.toggleEditInfo();
-  }
+  
 }

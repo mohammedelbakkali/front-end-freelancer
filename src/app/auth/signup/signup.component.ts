@@ -71,6 +71,7 @@ export class SignupComponent {
             dateOfBirth: this.valueForm.value.dateOfBirth,
             gender: this.valueForm.value.gender,
             password :this.valueForm.value.password,
+
           };
           
           this.service.signUp(this.user).subscribe({

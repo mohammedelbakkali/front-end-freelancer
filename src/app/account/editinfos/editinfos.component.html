@@ -1,11 +1,11 @@
-<div *ngIf="showEdit" class="card my-3">
+<div class="card my-3">
     <form>
+        <h5>Choose your display name</h5>
         <mat-form-field class="input">
-            <textarea matInput placeholder="Tell us about any of your hobbies, additional expertise, or anything else you'd like to add."></textarea>
+            <textarea matInput  ></textarea>
         </mat-form-field>
         <button class="btnn"
             mat-stroked-button
-            (click)="toggleEdit()"
         >Cancel</button>
         <button class="btnn" mat-raised-button color="primary" type="submit">Update</button>
     </form>
