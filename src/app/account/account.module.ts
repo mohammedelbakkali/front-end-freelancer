@@ -44,6 +44,7 @@ import { ManageGigsComponent } from './dashboard/gig/manage-gigs/manage-gigs.com
     MaterialExampleModule,
     ReactiveFormsModule,
     MatIconModule,
+    
 
     AngularEditorModule
   ]

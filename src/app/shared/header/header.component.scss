@@ -50,4 +50,19 @@ mat-toolbar{
   }
 }
 
+::ng-deep .cdk-overlay-container .tse-menu {
+  max-width: none !important;
+  margin-top: 5px;
 
+  &::after {
+      top: -5px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      content: '';
+      position: absolute;
+      border-left: 0.7rem solid transparent;
+      border-right: 0.7rem solid transparent;
+      border-bottom: 0.7rem solid white;
+  }
+}
