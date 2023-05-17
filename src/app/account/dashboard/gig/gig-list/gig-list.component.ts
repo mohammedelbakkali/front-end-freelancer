@@ -1,6 +1,8 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { Gig } from 'src/app/models/gig.model';
+import { GigService } from 'src/app/services/gig.service';
 
 export interface PeriodicElement {
   name: string;
@@ -9,7 +11,7 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: any[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
 
@@ -21,6 +23,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./gig-list.component.scss']
 })
 export class GigListComponent {
+
+  constructor(private  gigservice: GigService){
+    this.gitAllgigs();
+  }
+  gigTable:any[] = [];
+
   displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
@@ -49,4 +57,38 @@ export class GigListComponent {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
+  
+
+
+
+  
+  gig:Gig = {
+    gigtitle:"",
+    CategoryId:"",
+    photo:"",
+    subCategoryId:"",
+    Positivekeywords:[]
+  };
+
+
+
+  gitAllgigs(){
+       this.gigservice.getAllGigsOFUser().subscribe({
+          next:(res)=>{
+              // console.log(res.user.posts)
+              for(let i = 0 ; i < res.user.posts.length ; i++){
+                      const a = {
+                          gittitle : res.user.posts[i].gigtitle,
+                          description : res.user.posts[i].description,
+                          status : res.user.posts[i].status,
+
+                      }
+                      this.gigTable.push(a);
+                       
+              }
+
+          },
+          error:()=>{}
+       })
+    }
 }

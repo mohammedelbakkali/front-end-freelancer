@@ -8,11 +8,11 @@
 
 
 
-                       <!-- =================================== FORM 1============================================ -->
+                       <!-- =================================== FORM 1 ============================================ -->
            <!-- ====================================================================================== -->
             <mat-stepper [linear]="isLinear" #stepper orientation="vertical">
               <mat-step [stepControl]="firstFormGroup">
-                 <form  [formGroup]="firstFormGroup" (submit)="setData()" >
+                 <form  [formGroup]="firstFormGroup" (submit)="setData()"  method="post" enctype="multipart/form-data" >
                      <ng-template matStepLabel>Overview</ng-template>
                             <mat-card>
                                <mat-card-content>
@@ -78,6 +78,8 @@
                               </mat-chip-grid>
                             </mat-form-field>
 
+                            <input type="file" name="photo" (change)="onFileSelected($event)">
+
                       </div>
                       </mat-card-content>
                     </mat-card>
@@ -87,11 +89,11 @@
                 </form>
 
               </mat-step>
-           <!-- =================================== FORM 2============================================ -->
+           <!-- =================================== FORM 2 ============================================ -->
            <!-- ====================================================================================== -->
               <h4>Pricing</h4>
-              <mat-step [stepControl]="secondFormGroup" label="Pricing">
-                <form>
+              <mat-step [stepControl]="FormPACK" label="Pricing">
+              
                   <mat-card>
                       <div class="alert alert-primary mt-4" role="alert">
                           The scope of this service is to deliver buyers a functional website. Package prices should include predefined options at a minimum of $80 or they are very likely to receive less exposure in this category. Please move your Gig to another category if you do not offer this specific service.
@@ -103,52 +105,56 @@
                         <mat-slide-toggle [(ngModel)]="isChecked" name="toggle" >Offer packages
                         </mat-slide-toggle>
                              <!-- <button mat-button (click)="activePackage()">active</button> -->
+                             <form [formGroup]="FormPACK" (submit)="setDataPack()">
                             <mat-tab-group>
 
-
-                              
+                          <!-- ===========================BASIC============================= -->
+                        
                               <mat-tab label="BASIC"> 
-
 
                                   <div class="row_form">                          
                                       <mat-form-field appearance="fill" class="example-full-width">
                                         <mat-label>Name your package</mat-label>
-                                        <input matInput>
-                                      </mat-form-field>
+                                        <input matInput formControlName="nameBASIC"> 
+                                      </mat-form-field >
                                  </div>
 
                                  <div class="row_form">                                
                               <mat-form-field appearance="fill" class="example-full-width">
                                   <mat-label>Describe the details of your offering</mat-label>
-                                  <textarea matInput></textarea>
+                                  <textarea matInput formControlName="descriptionBASIC"></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">  
 
-                              <mat-form-field appearance="outline" class="example-full-width">
+
+
+
+                                <mat-form-field color="accent" appearance="fill">
                                   <mat-label>Delivery Time</mat-label>
-                                <mat-select>
-                              <mat-option value="one">First option</mat-option>
-                              <mat-option value="two">Second option</mat-option>
-                                </mat-select>
+                                  <input matInput [matDatepicker]="picker1" formControlName="deliveryTimeBASIC">
+                                  <mat-hint>MM/DD/YYYY</mat-hint>
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>
 
                                 <mat-form-field appearance="fill" class="example-full-width">
-                                  <mat-label>Textarea</mat-label>
-                                  <input matInput type="number">
+                                  <mat-label>Price</mat-label>
+                                  <input matInput type="number" formControlName="priceBASIC">
                                 </mat-form-field>
 
                               </div>
 
 
                               </mat-tab>
+                              <!-- ===========================STANDARD============================= -->
                               <mat-tab label="STANDARD"  [disabled]="!isChecked"> 
 
                                   <div class="row_form">                          
                                
                                       <mat-form-field appearance="fill" class="example-full-width">
                                         <mat-label>Name your package</mat-label>
-                                        <input matInput>
+                                        <input matInput formControlName="nameSTANDARD">
                                       </mat-form-field>
             
                                  </div>
@@ -156,31 +162,36 @@
                                  <div class="row_form">                                
                               <mat-form-field appearance="fill" class="example-full-width">
                                   <mat-label>Describe the details of your offering</mat-label>
-                                  <textarea matInput></textarea>
+                                  <textarea matInput formControlName="descriptionSTANDARD" ></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">   
-                              <mat-form-field appearance="outline" class="example-full-width">
+
+
+                                <mat-form-field color="accent" appearance="fill">
                                   <mat-label>Delivery Time</mat-label>
-                                <mat-select>
-                              <mat-option value="one">First option</mat-option>
-                              <mat-option value="two">Second option</mat-option>
-                                </mat-select>
+                                  <input matInput [matDatepicker]="picker2" formControlName="deliveryTimeSTANDARD">
+                                  <mat-hint>MM/DD/YYYY</mat-hint>
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker2></mat-datepicker>
                                 </mat-form-field>
+
                                    
                                 <mat-form-field appearance="fill" class="example-full-width">
-                                  <mat-label>Textarea</mat-label>
-                                  <input matInput type="number">
+                                  <mat-label >Textarea</mat-label>
+                                  <input matInput type="number" formControlName="priceSTANDARD" >
                                 </mat-form-field>
 
                               </div>
                               </mat-tab>
+                    <!-- ===========================PREMIUM============================= -->
+
                               <mat-tab label="PREMIUM"  [disabled]="!isChecked" >
                                   <div class="row_form">                          
                                
                                       <mat-form-field appearance="fill" class="example-full-width">
                                         <mat-label>Name your package</mat-label>
-                                        <input matInput>
+                                        <input matInput formControlName="namePREMIUM">
                                       </mat-form-field>
             
                                  </div>
@@ -188,26 +199,36 @@
                                  <div class="row_form">                                
                               <mat-form-field appearance="fill" class="example-full-width">
                                   <mat-label>Describe the details of your offering</mat-label>
-                                  <textarea matInput></textarea>
+                                  <textarea matInput formControlName="descriptionPREMIUM"></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">   
-                              <mat-form-field appearance="outline" class="example-full-width">
+
+
+                                <mat-form-field color="accent" appearance="fill">
                                   <mat-label>Delivery Time</mat-label>
-                                <mat-select>
-                              <mat-option value="one">First option</mat-option>
-                              <mat-option value="two">Second option</mat-option>
-                                </mat-select>
+                                  <input matInput [matDatepicker]="picker3" formControlName="deliveryTimePREMIUM">
+                                  <mat-hint>MM/DD/YYYY</mat-hint>
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker3></mat-datepicker>
                                 </mat-form-field>
+
 
                                 <mat-form-field appearance="fill" class="example-full-width">
                                   <mat-label>Textarea</mat-label>
-                                  <input matInput type="number">
+                                  <input matInput type="number" formControlName="pricePREMIUM">
                                 </mat-form-field>
                               </div>
-                              </mat-tab>
-                            </mat-tab-group>
+                             
 
+                              </mat-tab>
+
+                           
+                            </mat-tab-group>
+                            <button mat-button matStepperNext class="mt-3" type="submit" align="end">Save</button>
+
+ 
+ </form>
                            
                               
 
@@ -216,15 +237,15 @@
                     </mat-card>
                    
 
-                  <div>
-                    <button mat-button matStepperPrevious class="mt-3" align="end">Back</button>
-                    <button mat-button matStepperNext class="mt-3" align="end">Next</button>
-                  </div>
-                </form>
+                    <div>
+                      <button mat-button matStepperPrevious class="mt-3" align="end">Back</button>
+                      <button mat-button matStepperNext class="mt-3" align="end">Next</button>
+                    </div>
+                
 
               </mat-step>
             
-           <!-- =================================== FORM 3============================================ -->
+           <!-- =================================== FORM 3 ============================================ -->
            <!-- ====================================================================================== -->
 
               <mat-step [stepControl]="FormGroup3">
@@ -243,8 +264,9 @@
                              </div>
 
                     <!-- <mat-accordion class=" mt-5" multi *ngFor="let faq of faqs"> -->
-                          
-                      <mat-accordion class=" mt-5">
+
+                                                              <!-- FAQ -->
+                      <!-- <mat-accordion class=" mt-5">
         
                       <mat-expansion-panel class="mt-3">
                         <mat-expansion-panel-header>
@@ -285,7 +307,7 @@
   
                       <mat-divider></mat-divider>
   
-                      </mat-accordion>
+                      </mat-accordion> -->
 
                   <div>
                       <button mat-button matStepperNext submit>Next</button>

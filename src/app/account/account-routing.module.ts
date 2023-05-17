@@ -9,12 +9,26 @@ import { PageDashComponent } from './dashboard/page-dash/page-dash.component';
 import { GigComponent } from './dashboard/gig/gig.component';
 import { GigAddComponent } from './dashboard/gig/gig-add/gig-add.component';
 import { ManageGigsComponent } from './dashboard/gig/manage-gigs/manage-gigs.component';
+import { ListKeyManager } from '@angular/cdk/a11y';
+import { GigListComponent } from './dashboard/gig/gig-list/gig-list.component';
+import { HomeGigsComponent } from './dashboard/gig/home-gigs/home-gigs.component';
+import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-gig.component';
 
 
 const routes: Routes = [
   {
     path: '', component:AccountComponent,
     children :[
+      {
+
+        path:'',
+        component:HomeGigsComponent
+  
+ 
+      },{
+         path:"detail/:id",
+         component:DetailGigComponent
+      },
         {
           path: 'profile', component:ProfileComponent,canActivate:[AuthGuard]
         },

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
@@ -10,6 +10,7 @@ import { subCategory } from 'src/app/models/subCategory.model';
 import { Gig } from 'src/app/models/gig.model';
 import {MatAccordion} from '@angular/material/expansion';
 import { ToastrService } from 'ngx-toastr';
+import { Pack } from 'src/app/models/pack.model';
 export interface Fruit {
   name: string;
 }
@@ -42,27 +43,26 @@ export class GigAddComponent  implements OnInit{
     private toastr:ToastrService,
 
     ) {}
-    categoryTable: Category[] = [];
-    objetCategory: Category = {
-      name: '',
-      _id: ''
-    };
 
-    subCategoryTable : subCategory[]  = [];
-    subCategoryObjet :subCategory = {
-      name: '',
-      _id: ''
-    }
+
+
     gig:Gig = {
       gigtitle:"",
       CategoryId:"",
+      photo:"",
       subCategoryId:"",
       Positivekeywords:[]
     };
-  
+   
+    //=============FORMS================
+
    firstFormGroup!: FormGroup;
    secondFormGroup!:FormGroup;
-  FormGroup3!:FormGroup;
+   FormGroup3!:FormGroup;
+   FormPACK!:FormGroup;
+
+
+
    displayPackageValue = true;
      faq:FAQ = {
       num:0,
@@ -71,7 +71,6 @@ export class GigAddComponent  implements OnInit{
       inpt:""
      };
      inpt=""
-
       numFAQ:number = 1;
 
      faqs:FAQ[] = [
@@ -102,7 +101,7 @@ export class GigAddComponent  implements OnInit{
       gigtitle: ['', Validators.required],
       category: ['', Validators.required],
       subCategory: ['', Validators.required],
-      keywords: ['', Validators.required],
+      keywords: ['', Validators.required]
   
     });
 
@@ -117,11 +116,46 @@ export class GigAddComponent  implements OnInit{
     htmlContent:""
 
   });
+
+  this.FormPACK = this._formBuilder.group({
+
+    typeBASIC:'basic',
+    nameBASIC:'',
+    descriptionBASIC: '',
+    deliveryTimeBASIC:'',
+    priceBASIC:'',
+    
+    typeSTANDARD:'standard',
+    nameSTANDARD:'',
+    descriptionSTANDARD: '',
+    deliveryTimeSTANDARD:'',
+    priceSTANDARD:'',
+
+    typePREMIUM:'premium',
+    namePREMIUM:'',
+    descriptionPREMIUM: '',
+    deliveryTimePREMIUM:'',
+    pricePREMIUM:'',
+
+
+   
+  });
+
+
+
   }
 
   setFAQvalue(){
      if(this.FormGroup3.valid){
-      console.log(this.FormGroup3.value);
+      this.gigService.pushDescription(this.FormGroup3.value.htmlContent,this.postId).subscribe({
+        next:(res)=>{
+          console.log(res);
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      })
+      
     
      }
   }
@@ -132,22 +166,55 @@ export class GigAddComponent  implements OnInit{
     this.displayPackageValue != this.displayPackageValue;
  } 
 
+ file!: File | null;
+
+ onFileSelected(event: any) {
+  this.file = event.target.files[0];
+}
+
 //====================== POST Gig=====================
   setData(){
-     if(this.firstFormGroup.valid){
 
-      this.gig.gigtitle = this.firstFormGroup.value.gigtitle;
-      this.gig.subCategoryId = this.firstFormGroup.value.subCategory;
-      this.gig.CategoryId = this.firstFormGroup.value.category;
-      this.gig.Positivekeywords = this.firstFormGroup.value.keywords;
+     if(this.firstFormGroup.valid){
+      if (!this.file) {
+        console.log('Aucun fichier sélectionné');
+        return;
+      }
+       const arrayTemp:any = [];
+
+        var formData: any = new FormData();
+        const userId =localStorage.getItem('id');
+       formData.append('gigtitle',this.firstFormGroup.value.gigtitle);
+       formData.append('subCategoryId',this.firstFormGroup.value.subCategory);
+       formData.append('CategoryId',this.firstFormGroup.value.category);
+       formData.append('userId',userId);
+       formData.append('photo',this.file);
+
+      //  console.log(formData)
+      // this.gig.gigtitle = this.firstFormGroup.value.gigtitle;
+      // this.gig.subCategoryId = this.firstFormGroup.value.subCategory;
+      // this.gig.CategoryId = this.firstFormGroup.value.category;
+      // this.gig.photo = this.firstFormGroup.value.photo;
+
+           for(let i = 0 ;i<this.fruits.length ;i++){
+
+        arrayTemp[i]=JSON.stringify(this.fruits[i]);
+
+      }
+       //this.gig.Positivekeywords = arrayTemp ;
+
        
-      this.gigService.postGig(this.gig).subscribe({
+      this.gigService.postGig(formData).subscribe({
          next:(res)=>{
-            console.log(res)
+            //  console.log(res._id)
+             this.postId=res._id;
+         },
+         error:(err)=>{
+              console.log(err)
          }
       })
         // this.gigService.postGig()
-       console.log(this.gig);
+   
       //  console.log(this.fruits);
      }
   }
@@ -164,8 +231,8 @@ export class GigAddComponent  implements OnInit{
 
     // Add our fruit
     if (value) {
-      this.fruits.push({name: value});
-      console.log(this.fruits)
+      this.fruits.push({name: String(value)});
+      
     }
 
     // Clear the input value
@@ -192,9 +259,11 @@ export class GigAddComponent  implements OnInit{
     // Edit existing fruit
     const index = this.fruits.indexOf(fruit);
     if (index >= 0) {
-      this.fruits[index].name = value;
+      this.fruits[index].name =value;
     }
   }
+
+
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -207,6 +276,19 @@ export class GigAddComponent  implements OnInit{
     defaultFontName: 'Arial',
    
   };
+
+      //============================================Category============================================
+      categoryTable: Category[] = [];
+      objetCategory: Category = {
+        name: '',
+        _id: ''
+      };
+  
+      subCategoryTable : subCategory[]  = [];
+      subCategoryObjet :subCategory = {
+        name: '',
+        _id: ''
+      }
 
   name:any;
 
@@ -237,11 +319,11 @@ export class GigAddComponent  implements OnInit{
       this.subCategoryTable = [];
       this.gigService.getOnecategory(_id).subscribe({
         next:(res)=>{
-          console.log(res.subCategoryListId)
+          // console.log(res.subCategoryListId)
           var array;
           array =res.subCategoryListId;
           for(let i=0; i<array.length; i++){
-              console.log(array[i]._id)
+              // console.log(array[i]._id)
 
               this.subCategoryObjet.name = array[i].name;
               this.subCategoryObjet._id = array[i]._id;
@@ -262,7 +344,114 @@ export class GigAddComponent  implements OnInit{
   }
 
 
-//========================================================
+//============================================Pack============================================
+packs: Pack[] = [];
+packObjet: Pack = {
+  type: '',
+  name:'', 
+  description : '',
+  deliveryTime:new Date(),
+  price:0
+    };
+
+    postId:any;
+
+    setDataPack(){
+       if(this.FormPACK.valid){
+        // console.log(this.isChecked);
+           if(this.isChecked == false ){
+
+             const t  = {
+              type :this.FormPACK.value.typeBASIC,
+              name :this.FormPACK.value.nameBASIC,
+              description :this.FormPACK.value.descriptionBASIC,
+              deliveryTime :this.FormPACK.value.deliveryTimeBASIC,
+              price :this.FormPACK.value.priceBASIC,
+              postId:this.postId
+             }
+
+            //  console.log(t)
+
+            //  this.packs.push(t);
+             this.gigService.addPack(t).subscribe({
+                next:(res)=>{
+                    console.log(res,"data a ete bien envoyé")
+                },
+                error:(err)=>{
+                  console.log(err)
+                }
+             })
+
+            
+             this.packObjet= { type: '',name:'', description : '',deliveryTime:new Date(),price:0 };
+             
+             
+
+        // this.gigService.addPack()
+           }else{
+
+           const c = {
+              type :this.FormPACK.value.typeBASIC,
+              name :this.FormPACK.value.nameBASIC,
+              description :this.FormPACK.value.descriptionBASIC,
+              deliveryTime :this.FormPACK.value.deliveryTimeBASIC,
+              price :this.FormPACK.value.priceBASIC,
+              postId:this.postId
+             }
+
+             this.packs.push(c);
+            
+       //==============================STANDARD===============================
+           const  a = {
+              type :this.FormPACK.value.typeSTANDARD,
+              name :this.FormPACK.value.nameSTANDARD,
+              description :this.FormPACK.value.descriptionSTANDARD,
+              deliveryTime :this.FormPACK.value.deliveryTimeSTANDARD,
+              price :this.FormPACK.value.priceSTANDARD,
+              postId:this.postId
+             }
+
+             this.packs.push(a);
+            
+       //=============================================================
+         const     b = {
+              type :this.FormPACK.value.typePREMIUM,
+              name :this.FormPACK.value.namePREMIUM,
+              description :this.FormPACK.value.descriptionPREMIUM,
+              deliveryTime :this.FormPACK.value.deliveryTimePREMIUM,
+              price :this.FormPACK.value.pricePREMIUM,
+              postId:this.postId
+
+             }
+
+
+
+             this.packs.push(b);
+         
+
+             
+           }
+
+              for(let i = 0; i < this.packs.length; i++){
+                this.gigService.addPack(this.packs[i]).subscribe({
+                  next:(res)=>{
+                    
+                      console.log(res,"data a ete bien envoyé")
+                  },
+                  error:(err)=>{
+                    console.log(err)
+                  }
+               })
+              }
+
+              this.packs = [];
+           
+         
+       }
+    }
+
+
+
 activePackage(){
   
    if(this.displayPackageValue==true){
@@ -271,4 +460,6 @@ activePackage(){
     this.displayPackageValue = true;
    }
 }
+
+  
 }

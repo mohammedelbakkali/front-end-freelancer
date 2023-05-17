@@ -14,6 +14,7 @@ import { PageDashComponent } from './dashboard/page-dash/page-dash.component';
 import { GigComponent } from './dashboard/gig/gig.component';
 import { GigAddComponent } from './dashboard/gig/gig-add/gig-add.component';
 
+// Import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ManageGigsComponent } from './dashboard/gig/manage-gigs/manage-gigs.component';
+import { HomeGigsComponent } from './dashboard/gig/home-gigs/home-gigs.component';
+import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-gig.component';
 
 
 
@@ -36,7 +39,9 @@ import { ManageGigsComponent } from './dashboard/gig/manage-gigs/manage-gigs.com
     GigAddComponent,
     GigListComponent,
     PageDashComponent,
-    ManageGigsComponent
+    ManageGigsComponent,
+    HomeGigsComponent,
+    DetailGigComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +49,7 @@ import { ManageGigsComponent } from './dashboard/gig/manage-gigs/manage-gigs.com
     MaterialExampleModule,
     ReactiveFormsModule,
     MatIconModule,
-    
+ 
 
     AngularEditorModule
   ]
