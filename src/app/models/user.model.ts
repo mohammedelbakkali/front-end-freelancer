@@ -14,7 +14,7 @@ export interface User {
     languages?: language[];
     skills?: skill[];
     education?: education[];
-    certification?: certification[];
+    certifications?: certification[];
     
   }
   
