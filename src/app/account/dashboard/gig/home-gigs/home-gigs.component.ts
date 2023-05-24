@@ -112,6 +112,7 @@ export class HomeGigsComponent {
 
                    }
                   //  console.log(res[0].userId)
+                   console.log(res[i].packId)
                    this.gigTable.push(a);
 
              

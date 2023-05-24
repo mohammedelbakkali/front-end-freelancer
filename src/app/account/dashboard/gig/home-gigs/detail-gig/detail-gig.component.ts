@@ -45,7 +45,7 @@ export class DetailGigComponent implements OnInit {
      this.gigservice.getOneGigById(String(this.itemId)).subscribe({
            next :(res)=>{
 
-               console.log(res)
+              //  console.log(res)
                this.gig  = {
                 gigtitle:res.gigtitle,
                 Category:res.CategoryId.name,
@@ -58,7 +58,7 @@ export class DetailGigComponent implements OnInit {
                }
 
                this.contentHtmlDes=res.description;
-               console.log(this.gig.packs[1])
+              //  console.log(this.gig.packs)
            },
            error :(err)=>{
             // console.log(err)
