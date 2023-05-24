@@ -53,19 +53,20 @@ export class DetailGigComponent implements OnInit {
                 Positivekeywords:res.Positivekeywords,
                 description:res.description,
                 nameUser:res.userId.fullname,
-                packs:res.packId
+                username:res.userId.username,
+                packs:res.packId,
+
                }
 
                this.contentHtmlDes=res.description;
-               console.log(this.gig.packs[1])
            },
            error :(err)=>{
             // console.log(err)
            }
      })
   }
-
-
+  
+  
 
 
   
