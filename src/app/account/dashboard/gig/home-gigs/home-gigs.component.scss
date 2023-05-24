@@ -1,16 +1,22 @@
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
 .example-spacer {
     flex: 1 1 auto;
   }
 
-  .example-card {
-    max-width: 300px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }  
+.userpic{
+  border-radius: 60%;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.username{
+  display: inline-block;
+}
 
-  .lien:hover{
-     color: black;
-  }
+.chip{
+  margin-right: 3px;
+  margin-bottom: 10px;
+}

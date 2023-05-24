@@ -17,9 +17,11 @@
                             <mat-card>
                                <mat-card-content>
                                  <mat-card-title>Gig title</mat-card-title>
-                                 <mat-card-subtitle>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</mat-card-subtitle>
+                                 <mat-card-subtitle>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.
+                                  you can only use 80 characters
+                                 </mat-card-subtitle>
                                   <div class="row_form">                          
-                                     <mat-form-field appearance="fill" class="example-full-width">
+                                     <mat-form-field appearance="outline" class="example-full-width">
                                       <mat-label >Gig title</mat-label>
                                       <textarea matInput value="test" formControlName="gigtitle" #message maxlength="100"></textarea>
                                       <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
@@ -30,7 +32,7 @@
                                   <mat-card-subtitle>Choose the category and sub-category most suitable for your Gig.</mat-card-subtitle>
                                    <div class="row_form">
                                        <mat-form-field appearance="outline" class="example-full-width">
-                                        <mat-label>SELECT CATEGORY</mat-label>
+                                        <mat-label>Category</mat-label>
                                           <mat-select formControlName="category" [(ngModel)]="value" name="value" (ngModelChange)="getOnecategory(value)">
                                               <mat-option *ngFor="let cat of categoryTable" value ={{cat._id}}>{{cat.name}}</mat-option>
                                               
@@ -39,7 +41,7 @@
                                         <!-- {{value}} -->
 
                         <mat-form-field appearance="outline" class="example-full-width">
-                          <mat-label>SELECT SUBCATEGORY</mat-label>
+                          <mat-label> Subcategory</mat-label>
                         <mat-select formControlName="subCategory" >
                       <mat-option *ngFor="let subCat of subCategoryTable" value ={{subCat._id}}>{{subCat.name}}</mat-option>
                         </mat-select>
@@ -54,7 +56,7 @@
 
 
                       <div class="row-form">
-                            <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Favorite Fruits</mat-label>
                               <mat-chip-grid #chipGrid aria-label="Enter fruits">
                                 <mat-chip-row *ngFor="let fruit of fruits"
@@ -113,16 +115,16 @@
                               <mat-tab label="BASIC"> 
 
                                   <div class="row_form">                          
-                                      <mat-form-field appearance="fill" class="example-full-width">
-                                        <mat-label>Name your package</mat-label>
-                                        <input matInput formControlName="nameBASIC"> 
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Package name</mat-label>
+                                        <input matInput formControlName="nameBASIC" placeholder="Name your package"> 
                                       </mat-form-field >
                                  </div>
 
                                  <div class="row_form">                                
-                              <mat-form-field appearance="fill" class="example-full-width">
-                                  <mat-label>Describe the details of your offering</mat-label>
-                                  <textarea matInput formControlName="descriptionBASIC"></textarea>
+                              <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Description</mat-label>
+                                  <textarea matInput formControlName="descriptionBASIC" placeholder="Describe the details of your offering"></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">  
@@ -130,7 +132,7 @@
 
 
 
-                                <mat-form-field color="accent" appearance="fill">
+                                <mat-form-field color="accent" appearance="outline">
                                   <mat-label>Delivery Time</mat-label>
                                   <input matInput [matDatepicker]="picker1" formControlName="deliveryTimeBASIC">
                                   <mat-hint>MM/DD/YYYY</mat-hint>
@@ -138,7 +140,7 @@
                                   <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>
 
-                                <mat-form-field appearance="fill" class="example-full-width">
+                                <mat-form-field appearance="outline" class="example-full-width">
                                   <mat-label>Price</mat-label>
                                   <input matInput type="number" formControlName="priceBASIC">
                                 </mat-form-field>
@@ -152,23 +154,23 @@
 
                                   <div class="row_form">                          
                                
-                                      <mat-form-field appearance="fill" class="example-full-width">
-                                        <mat-label>Name your package</mat-label>
-                                        <input matInput formControlName="nameSTANDARD">
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Package name</mat-label>
+                                        <input matInput formControlName="nameSTANDARD" placeholder="name your package">
                                       </mat-form-field>
             
                                  </div>
 
                                  <div class="row_form">                                
-                              <mat-form-field appearance="fill" class="example-full-width">
-                                  <mat-label>Describe the details of your offering</mat-label>
-                                  <textarea matInput formControlName="descriptionSTANDARD" ></textarea>
+                              <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Description</mat-label>
+                                  <textarea matInput formControlName="descriptionSTANDARD" placeholder="Describe the details of your offering"></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">   
 
 
-                                <mat-form-field color="accent" appearance="fill">
+                                <mat-form-field color="accent" appearance="outline">
                                   <mat-label>Delivery Time</mat-label>
                                   <input matInput [matDatepicker]="picker2" formControlName="deliveryTimeSTANDARD">
                                   <mat-hint>MM/DD/YYYY</mat-hint>
@@ -177,7 +179,7 @@
                                 </mat-form-field>
 
                                    
-                                <mat-form-field appearance="fill" class="example-full-width">
+                                <mat-form-field appearance="outline" class="example-full-width">
                                   <mat-label >Textarea</mat-label>
                                   <input matInput type="number" formControlName="priceSTANDARD" >
                                 </mat-form-field>
@@ -189,23 +191,23 @@
                               <mat-tab label="PREMIUM"  [disabled]="!isChecked" >
                                   <div class="row_form">                          
                                
-                                      <mat-form-field appearance="fill" class="example-full-width">
-                                        <mat-label>Name your package</mat-label>
-                                        <input matInput formControlName="namePREMIUM">
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Package name</mat-label>
+                                        <input matInput formControlName="namePREMIUM" placeholder="name your package">
                                       </mat-form-field>
             
                                  </div>
 
                                  <div class="row_form">                                
-                              <mat-form-field appearance="fill" class="example-full-width">
-                                  <mat-label>Describe the details of your offering</mat-label>
-                                  <textarea matInput formControlName="descriptionPREMIUM"></textarea>
+                              <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Description</mat-label>
+                                  <textarea matInput formControlName="descriptionPREMIUM" placeholder="Describe the details of your offering"></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">   
 
 
-                                <mat-form-field color="accent" appearance="fill">
+                                <mat-form-field color="accent" appearance="outline">
                                   <mat-label>Delivery Time</mat-label>
                                   <input matInput [matDatepicker]="picker3" formControlName="deliveryTimePREMIUM">
                                   <mat-hint>MM/DD/YYYY</mat-hint>
@@ -214,7 +216,7 @@
                                 </mat-form-field>
 
 
-                                <mat-form-field appearance="fill" class="example-full-width">
+                                <mat-form-field appearance="outline" class="example-full-width">
                                   <mat-label>Textarea</mat-label>
                                   <input matInput type="number" formControlName="pricePREMIUM">
                                 </mat-form-field>
@@ -285,13 +287,13 @@
                         </mat-expansion-panel-header>
 
                        <div class="row_form">
-                        <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-form-field appearance="outline" style="width: 100%;">
                           <mat-label>Question</mat-label>
                           <input matInput formControlName="questionfaq">
                                                 
                         </mat-form-field>
                     
-                        <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-form-field appearance="outline" style="width: 100%;">
                           <mat-label>Response</mat-label>
                           <input matInput formControlName="responsefaq">
                         </mat-form-field>
@@ -331,16 +333,15 @@
               </mat-step>
             </mat-stepper>
         </div>
-        <div class="col-md-2">
-          <div class="alert alert-info mt-5" style="width: 100%;" role="alert">
-               
-                    <h5>Describe your Gig.</h5>
-                       <span>This is your Gig title. Choose wisely, you can only use 80 characters</span>
-              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+        <!-- <div class="col-md-2">
+            <div class="alert alert-info mt-5" style="width: 100%;" role="alert">
+                <h5>Describe your Gig.</h5>
+                <span>This is your Gig title. Choose wisely, you can only use 80 characters</span>
+                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                   <span class="visually-hidden">New alerts</span>
                 </span>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 

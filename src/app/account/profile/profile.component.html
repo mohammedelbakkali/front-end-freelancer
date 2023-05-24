@@ -121,12 +121,13 @@
                                 *ngIf="!formDisplay2"
                                 style="width: 100%;"
                                 >
-                            <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-form-field appearance="outline" style="width: 80%; margin: 10px">
+                              <mat-label>Name</mat-label>
                               <input matInput 
                                     type="text" 
                                     name="data" 
                                     formControlName="name"
-                                    placeholder="Add a language" 
+                                    placeholder="Add a language name" 
                                     [(ngModel)]="selectedItem.name">
                                     
                             </mat-form-field>
@@ -140,8 +141,8 @@
                               </select>
                             </mat-form-field>
                             <button mat-stroked-button color="primary" (click)="formDisplay2=true" style="width: 46%;" class="mx-2">Cancel</button>
-                            <button mat-raised-button color="primary" type="submit" (click)="formDisplay2=true"style="width: 46%;">Save</button>
-                            <input  type="submit" [value]="operationLang ? add : update " class="btn" >
+                            <button  type="submit" [value]="operationLang ? add : update " class="btnn"> Save </button>
+          
                           </form>
                          
                         </mat-expansion-panel>
@@ -188,7 +189,7 @@
                             </mat-form-field>
                             <button mat-stroked-button color="primary" (click)="formDisplay3=true" style="width: 46%;" class="mx-2">Cancel</button>
                             <button mat-raised-button color="primary" type="submit"  (click)="formDisplay3=true"style="width: 46%;">Save</button>
-                            <input  type="submit" [value]="operationLang ? add : update " class="btn" >
+                            <input  type="submit" [value]="operationLang ? add : update " class="btnn" >
                           </form>
                         </mat-expansion-panel>
                       <!-- EDUCATION --> 
@@ -269,7 +270,7 @@
                                 </mat-form-field>
                                 <button mat-stroked-button color="primary" (click)="formDisplay4=true" style="width: 46%;" class="mx-2">Cancel</button>
                                 <button mat-raised-button color="primary" type="submit" (click)="formDisplay4=true"style="width: 46%;">Save</button>   
-                                <input  type="submit" [value]="operationLang ? add : update " class="btn" > 
+                                <input  type="submit" [value]="operationLang ? add : update " class="btnn" > 
                             </form>
                         </mat-expansion-panel>
                       <!-- CERTIFICATION -->          
@@ -322,7 +323,7 @@
                           </mat-form-field>
                           <button mat-stroked-button color="primary" (click)="formDisplay5=true" style="width: 46%;" class="mx-2">Cancel</button>
                           <button mat-raised-button color="primary" type="submit" (click)="formDisplay5=true"style="width: 46%;">Save</button>
-                          <input  type="submit" [value]="operationLang ? add : update " class="btn" > 
+                          <input  type="submit" [value]="operationLang ? add : update " class="btnn" > 
                         </form>
 
                           

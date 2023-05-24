@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Gig } from 'src/app/models/gig.model';
 import { GigService } from 'src/app/services/gig.service';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-detail-gig',
@@ -11,21 +12,24 @@ import { GigService } from 'src/app/services/gig.service';
 export class DetailGigComponent implements OnInit {
   itemId!: string;
 
-  constructor(private route: ActivatedRoute , private  gigservice: GigService ) { 
+  constructor(
+    private route: ActivatedRoute , 
+    private  gigservice: GigService,
+    private  userService: UserService,
+    ) { 
   
   }
 
   ngOnInit() {
-    
     this.route.params.subscribe(params => {
       this.itemId = params['id'];
       // Perform additional actions based on the item ID
     });
-    this.gitOneGig();
-    
+
+    this.getOneGig();
   }
 
-  a:any = {
+  gig:any = {
     gigtitle:"",
     CategoryId:"",
     photo:"",
@@ -33,27 +37,28 @@ export class DetailGigComponent implements OnInit {
     Positivekeywords:[],
     description:""
   };
-
+  
   contentHtmlDes!:any;
  
 
-  gitOneGig(){
+  getOneGig(){
      this.gigservice.getOneGigById(String(this.itemId)).subscribe({
            next :(res)=>{
 
                console.log(res)
-               this.a  = {
+               this.gig  = {
                 gigtitle:res.gigtitle,
-                CategoryId:res.CategoryId.name,
+                Category:res.CategoryId.name,
                 photo:"http://localhost:4000/"+res.photo,
-                subCategoryId:res.subCategoryId,
+                subCategoryId:res.subCategoryId.name,
                 Positivekeywords:res.Positivekeywords,
                 description:res.description,
+                nameUser:res.userId.fullname,
+                packs:res.packId
                }
 
-               console.log(res.photo)
-
                this.contentHtmlDes=res.description;
+               console.log(this.gig.packs[1])
            },
            error :(err)=>{
             // console.log(err)

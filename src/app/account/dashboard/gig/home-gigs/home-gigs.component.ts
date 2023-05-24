@@ -93,17 +93,21 @@ export class HomeGigsComponent {
        next:(res)=>{
         
            for(let i = 0 ; i < res.length ; i++){
+
             console.log(res[i])
                    var a = {
-                     
-                      gigtitle : res[i].gigtitle,
+                       gigtitle : res[i].gigtitle,
                        description : res[i].description,
                        status : res[i].status,
                        photo:"http://localhost:4000/"+res[i].photo,
-                       CategoryId:res[i].CategoryId.name,
+                       category:res[i].CategoryId.name,
+                       subCategory:res[i].subCategoryId.name,
                        nameUser:res[i].userId.fullname,
                        _id:res[i]._id,
-                       subCategoryId:res[i].subCategoryId.name
+                       namePack : res[i].packId[0].name,
+                       pricePack : res[i].packId[0].price
+                      //  packId:res[i].userId.packId[0].price
+
 
 
                    }

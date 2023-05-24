@@ -102,7 +102,6 @@ export class ProfileComponent  implements OnInit {
             skills:res.user.skills,
             education:res.user.education,
             certifications:res.user.certifications,
-
           }
 
           this.arrayOfLang =  res.user.languages;
