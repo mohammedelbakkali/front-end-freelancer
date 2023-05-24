@@ -63,6 +63,10 @@ export class GigService {
           return this._http.get(this.api+"post/"+id);
       }
 
+      getSubCategory(subCategoryId:any):Observable<any>{
+         return this._http.get('http://localhost:4000/subcategory/'+subCategoryId);
+      }
+
 
 
 }

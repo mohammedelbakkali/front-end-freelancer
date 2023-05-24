@@ -4,7 +4,7 @@ import { Category } from 'src/app/models/category.model';
 import { Gig } from 'src/app/models/gig.model';
 import { subCategory } from 'src/app/models/subCategory.model';
 import { GigService } from 'src/app/services/gig.service';
-
+// ph pe pes
 @Component({
   selector: 'app-home-gigs',
   templateUrl: './home-gigs.component.html',
@@ -93,7 +93,7 @@ export class HomeGigsComponent {
        next:(res)=>{
         
            for(let i = 0 ; i < res.length ; i++){
-            console.log(res[i].userId)
+            console.log(res[i])
                    var a = {
                      
                       gigtitle : res[i].gigtitle,
@@ -102,7 +102,8 @@ export class HomeGigsComponent {
                        photo:"http://localhost:4000/"+res[i].photo,
                        CategoryId:res[i].CategoryId.name,
                        nameUser:res[i].userId.fullname,
-                       _id:res[i]._id
+                       _id:res[i]._id,
+                       subCategoryId:res[i].subCategoryId.name
 
 
                    }
@@ -115,12 +116,22 @@ export class HomeGigsComponent {
           //  console.log(this.gigTable)
 
        },
-       error:()=>{}
+       error:(err)=>{
+        console.log(err);
+       }
     })
  }
 
- goToDetail(itemId: string) {
+
+
+goToDetail(itemId: string) {
   this.router.navigate(['/account/detail', itemId]);
 }
+
+gitPageBySubCategory(idSubCategory: string) {
+  this.router.navigate(['/account/sub', idSubCategory]);
+}
+
+
  
 }

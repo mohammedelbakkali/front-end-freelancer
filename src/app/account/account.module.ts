@@ -24,6 +24,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ManageGigsComponent } from './dashboard/gig/manage-gigs/manage-gigs.component';
 import { HomeGigsComponent } from './dashboard/gig/home-gigs/home-gigs.component';
 import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-gig.component';
+import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
 
 
 
@@ -41,7 +42,8 @@ import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-
     PageDashComponent,
     ManageGigsComponent,
     HomeGigsComponent,
-    DetailGigComponent
+    DetailGigComponent,
+    GetBySubCategoryComponent
   ],
   imports: [
     CommonModule,

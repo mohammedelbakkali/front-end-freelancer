@@ -183,7 +183,8 @@ export class GigAddComponent  implements OnInit{
        const arrayTemp:any = [];
 
         var formData: any = new FormData();
-        const userId =localStorage.getItem('id');
+        const userId = localStorage.getItem('id');
+        console.log("======================> Id : ",userId);
        formData.append('gigtitle',this.firstFormGroup.value.gigtitle);
        formData.append('subCategoryId',this.firstFormGroup.value.subCategory);
        formData.append('CategoryId',this.firstFormGroup.value.category);

@@ -1,20 +1,9 @@
 <mat-toolbar >
-
     <button mat-button [matMenuTriggerFor]="menu" *ngFor="let cat of categoryTable" (click)="subCategory(cat._id)">{{cat.name}}</button>
     <mat-menu #menu="matMenu" style="width: 100%;"  >
-
-        <button mat-menu-item *ngFor="let subcat of subCategoryTable">{{subcat.name}}</button>
-
+        <button mat-menu-item *ngFor="let subcat of subCategoryTable"><a [routerLink]="['/account/sub',subcat._id]">{{subcat.name}}</a></button>
     </mat-menu>
-
   </mat-toolbar>
-
-
-
-
- 
-  
-
 
 
  <div class="album py-5 bg-body-tertiary">
@@ -32,6 +21,7 @@
                 <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{gig.CategoryId}}</mat-card-title>
+                <mat-card-title><i>{{gig.subCategoryId}}</i></mat-card-title>
                 <mat-card-subtitle>{{gig.nameUser}}</mat-card-subtitle>
 
               </mat-card-header>

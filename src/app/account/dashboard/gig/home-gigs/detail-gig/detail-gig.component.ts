@@ -22,6 +22,7 @@ export class DetailGigComponent implements OnInit {
       // Perform additional actions based on the item ID
     });
     this.gitOneGig();
+    
   }
 
   a:any = {

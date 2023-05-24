@@ -13,6 +13,7 @@ import { ListKeyManager } from '@angular/cdk/a11y';
 import { GigListComponent } from './dashboard/gig/gig-list/gig-list.component';
 import { HomeGigsComponent } from './dashboard/gig/home-gigs/home-gigs.component';
 import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-gig.component';
+import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
          path:"detail/:id",
          component:DetailGigComponent
       },
+      {
+        path:"sub/:id",
+        component:GetBySubCategoryComponent
+     },
         {
           path: 'profile', component:ProfileComponent,canActivate:[AuthGuard]
         },
