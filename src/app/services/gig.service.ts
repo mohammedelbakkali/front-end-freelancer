@@ -60,7 +60,13 @@ export class GigService {
       }
 
       getOneGigById(id:any):Observable<any>{
-          return this._http.get(this.api+"post/"+id);
+          const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${this.authToken}`
+            })
+          };  
+          return this._http.get(this.api+"post/"+id, httpOptions);
       }
 
 
