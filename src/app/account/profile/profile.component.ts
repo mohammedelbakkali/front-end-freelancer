@@ -84,6 +84,7 @@ export class ProfileComponent  implements OnInit {
   arrayOfSkills!: any[];
   arrayOfEducation!: any[];
   arrayOfCertifications!: any[];
+  createdAt:any;
 
   id = localStorage.getItem('id')   //this is the user's id stored in localStorage
 
@@ -102,8 +103,9 @@ export class ProfileComponent  implements OnInit {
             skills:res.user.skills,
             education:res.user.education,
             certifications:res.user.certifications,
+            updatedAt:res.user.createdAt.slice(0,10),
           }
-
+          
           this.arrayOfLang =  res.user.languages;
           for(let i=0; i<this.arrayOfLang.length; i++) {
               this.langObj.name =   this.arrayOfLang[i].name;

@@ -15,7 +15,7 @@ export interface User {
     skills?: skill[];
     education?: education[];
     certifications?: certification[];
-    
+    updatedAt?: Date;
   }
   
   

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GigService } from 'src/app/services/gig.service';
 import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-detail-gig',
@@ -15,10 +14,7 @@ export class DetailGigComponent implements OnInit {
   constructor(
     private route: ActivatedRoute , 
     private  gigservice: GigService,
-    private  userService: UserService,
-    ) { 
-  
-  }
+    ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -55,13 +51,18 @@ export class DetailGigComponent implements OnInit {
                 description:res.description,
                 nameUser:res.userId.fullname,
                 username:res.userId.username,
+                userLanguages:res.userId.languages,
+                userSkills:res.userId.skills,
+                userDescription:res.userId.description,
+                userCreatedAt:res.userId.updatedAt.slice(0,10),
+
                 packs:res.packId,
 
                }
 
                this.contentHtmlDes=res.description;
 
-              //  console.log(this.gig.packs)
+               console.log(this.gig.userSkills)
 
            },
            error :(err)=>{

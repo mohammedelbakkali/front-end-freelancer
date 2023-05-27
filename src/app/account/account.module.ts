@@ -14,7 +14,7 @@ import { PageDashComponent } from './dashboard/page-dash/page-dash.component';
 import { GigComponent } from './dashboard/gig/gig.component';
 import { GigAddComponent } from './dashboard/gig/gig-add/gig-add.component';
 
-// Import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
 
 
 import { ReactiveFormsModule } from '@angular/forms';
