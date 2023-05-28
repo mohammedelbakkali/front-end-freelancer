@@ -1,8 +1,8 @@
 <mat-toolbar >
   
-    <a href="#overview" fragment="overview">Overview</a>
-    <a href="#description" fragment="description">Description</a>
-    <a href="#seller" fragment="seller">About the seller</a>
+  <a href="#overview" fragment="overview">Overview</a>
+  <a href="#description" fragment="description">Description</a>
+  <a href="#seller" fragment="seller">About the seller</a>
 </mat-toolbar>
 
 
@@ -10,155 +10,143 @@
 
 <div class=" m-5">
 <div class="container-fluid">
-     <div class="row">
-      <div class="col-sm-1"> </div>
-          <div class="col-md-6">
-            <a class="my-3" style="margin-right: 2px;">{{gig.Category}} </a>
-              >
-            <a href="">{{gig.subCategoryId}}</a>
-            <div class="my-4" style="width: 100%;" id="overview"> 
-                <h2 class="mb-3">{{gig.gigtitle}}</h2>
-                
-           
-                <div style="display: flex;align-items: center;">
-                  <img src="../../../../../../assets/pics/profilepic.jpeg" class="profile mb-4">
-                  <p style="display:inline-block"> {{gig.nameUser}} <span class="username mx-2">@{{gig.username}} |</span>  
-                    <i [ngClass]="reviewsTotal>=1 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
-                    <i [ngClass]="reviewsTotal>=2 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
-                    <i [ngClass]="reviewsTotal>=3 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
-                    <i [ngClass]="reviewsTotal>=4 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
-                    <i [ngClass]="reviewsTotal==5 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
-                  </p>
-                 
-
-                </div>
-               <div class="card-body">
-                  <img  class="card-img-top" src={{gig.photo}} style="width: 85%;">
-
-                  
-                 <div class="description">
-
-                  <div class="description"  id="description">
-                    <h5 class="mt-3">About this gig</h5>
-                    <div [innerHTML]="contentHtmlDes"></div>
-                  </div>
-                  <h5 class="mt-5">About this Seller</h5>
-                  
-                  <div class="seller mt-5" id="seller">
-
-                    <div class="box">
-                      <div class="content">
-                        <img src="../../../../../../assets/pics/profilepic.jpeg" class="profile mb-4" style="margin-left:150px;">
-
-                        <p style="color:black;  margin-right:100px">{{gig.nameUser}}</p>
-                        <button class="shadow__btn"    (click)="CreateRoom()">
-                       Contact me <mat-icon> message</mat-icon>
-
-                        <div>
-                          <p style="color:black;  margin-right:100px">{{gig.nameUser}} <br> @ {{gig.username}}</p>
-                        </div>
-                        <button class="shadow__btn">
-                          <p style="margin: 0;">Contact me</p>
-                        </button>
-
-            
-                    <div class="card p-3" style="width: 600px; margin-top:30px;">
-                      <div *ngIf="gig.userSkills">
-                        <h5>Skills</h5>
-                        <p  *ngFor="let skill of gig.userSkills" style="display: inline-block;">{{skill.name}} • </p>
-                        <mat-divider ></mat-divider>
-                      </div>
-                      <div class="mt-2">
-                        <div class="row">
-                        <div class="col-4">
-                          <h6 style="font-size:15px">Languages</h6>
-                          <p *ngFor="let language of gig.userLanguages"
-                            matTooltip={{language.level}}
-                            style="display: inline-block;"
-                          >{{language.name}}, </p>
-                        </div>
-                        <div class="col-3">
-                          <h6 style="font-size:15px">From </h6>
-                          <p>Morocco</p>
-                        </div>
-                        <div class="col-3">
-                          <h6 style="font-size:15px">Member since </h6>
-                          <p>{{gig.userCreatedAt}}</p>
-                        </div>
-                        </div>
-                        
-                      </div>
-                      <mat-divider class="mb-2"></mat-divider>
-                        <p> {{gig.userDescription}} </p>
-                    </div>
-                
-                
-
-
-                
-    
-
-
-            
-
+   <div class="row">
+    <div class="col-sm-1"> </div>
+        <div class="col-md-6">
+          <a class="my-3" style="margin-right: 2px;">{{gig.Category}} </a>
+            >
+          <a href="">{{gig.subCategoryId}}</a>
+          <div class="my-4" style="width: 100%;" id="overview"> 
+              <h2 class="mb-3">{{gig.gigtitle}}</h2>
          
+              <div style="display: flex;align-items: center;">
+                <img src="../../../../../../assets/pics/profilepic.jpeg" class="profile mb-4">
+                <p style="display:inline-block"> {{gig.nameUser}} <span class="username mx-2">@{{gig.username}} |</span>  
+                  <i [ngClass]="reviewsTotal>=1 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
+                  <i [ngClass]="reviewsTotal>=2 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
+                  <i [ngClass]="reviewsTotal>=3 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
+                  <i [ngClass]="reviewsTotal>=4 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
+                  <i [ngClass]="reviewsTotal==5 ? 'bi-star-fill ': 'bi-star'"  class="bi" style="color:#ffd166"></i>
+                </p>
+               
 
-
-
-
-
-
-
-
-
-
-        <div class="col-md-4 packages">
-          <div class="card p-4 ">
-
-            <mat-tab-group>
-              <mat-tab label="Basic" >
-                <div class="m-4">
-                  <b class="my-5">{{packOne.name}} </b>
-                  <p style="display: inline; float:right">{{packOne.price| currency:'$'}}</p>
-                  <p class="my-4"> {{packOne.description}} </p>
-                  <p><i class="bi bi-clock-history"></i> 10 Days Delivery</p>
+              </div>
+              <div class="card-body">
+                <img  class="card-img-top" src={{gig.photo}} style="width: 85%;">
+                <div class="description"  id="description">
+                  <h5 class="mt-3">About this gig</h5>
+                  <div [innerHTML]="contentHtmlDes"></div>
                 </div>
-              </mat-tab>
-              <mat-tab label="Standard" *ngIf="x">
-                <div class="m-4">
-                  <b class="my-5">{{packTwo.name}} </b>
-                  <p style="display: inline; float:right">{{packTwo.price| currency:'$'}}</p>
-                  <p class="my-4"> {{packTwo.description}} </p>
-                  <p><i class="bi bi-clock-history"></i> 10 Days Delivery</p>
+                <h5 class="mt-5">About this Seller</h5>
+                
+                <div class="seller mt-5" id="seller">
+
+                  <div class="box">
+                    <div class="content">
+                      <img src="../../../../../../assets/pics/profilepic.jpeg" class="profile mb-4" style="margin-left:150px;">
+                      <div>
+                        <p style="color:black;  margin-right:100px">{{gig.nameUser}} <br> @ {{gig.username}}</p>
+                      </div>
+                      <button class="shadow__btn">
+                        <p style="margin: 0;">Contact me</p>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card p-3" style="width: 600px; margin-top:30px;">
+                    <div *ngIf="gig.userSkills">
+                      <h5>Skills</h5>
+                      <p  *ngFor="let skill of gig.userSkills" style="display: inline-block;">{{skill.name}} • </p>
+                      <mat-divider ></mat-divider>
+                    </div>
+                    <div class="mt-2">
+                      <div class="row">
+                      <div class="col-4">
+                        <h6 style="font-size:15px">Languages</h6>
+                        <p *ngFor="let language of gig.userLanguages"
+                          matTooltip={{language.level}}
+                          style="display: inline-block;"
+                        >{{language.name}}, </p>
+                      </div>
+                      <div class="col-3">
+                        <h6 style="font-size:15px">From </h6>
+                        <p>Morocco</p>
+                      </div>
+                      <div class="col-3">
+                        <h6 style="font-size:15px">Member since </h6>
+                        <p>{{gig.userCreatedAt}}</p>
+                      </div>
+                      </div>
+                      
+                    </div>
+                    <mat-divider class="mb-2"></mat-divider>
+                      <p> {{gig.userDescription}} </p>
+                  </div>
                 </div>
-              </mat-tab>
-              <mat-tab label="Premium"  *ngIf="x">
-                <div class="m-4">
-                  <b class="my-5">{{packThree.name}} </b>
-                  <p style="display: inline; float:right">{{packThree.price| currency:'$'}}</p>
-                  <p class="my-4"> {{packThree.description}} </p>
-                  <p><i class="bi bi-clock-history"></i> 10 Days Delivery</p>
-                </div>
-              </mat-tab>
-            </mat-tab-group>
-            <div>
-              <a class="fancy" href="#">
-                <span class="top-key"></span>
-                <span class="text">Proceed to payment</span>
-                <span class="bottom-key-1"></span>
-                <span class="bottom-key-2"></span>
-              </a>
-            </div>
-            
-          </div>
-          <div class="card mt-4 p-3" *ngIf="!displayReviewVar"  >
-            <h2 style="font-size: 17px;" class="mx-3">Review the gig</h2>
+              </div>
+
+
               
-              <app-stars></app-stars>
-          </div>
+            </div>
         </div>
 
-         
+
+
+
+
+
+
+
+
+      <div class="col-md-4 packages">
+        <div class="card p-4 ">
+
+          <mat-tab-group>
+            <mat-tab label="Basic" >
+              <div class="m-4">
+                <b class="my-5">{{packOne.name}} </b>
+                <p style="display: inline; float:right">{{packOne.price| currency:'$'}}</p>
+                <p class="my-4"> {{packOne.description}} </p>
+                <p><i class="bi bi-clock-history"></i> 10 Days Delivery</p>
+              </div>
+            </mat-tab>
+            <mat-tab label="Standard" *ngIf="x">
+              <div class="m-4">
+                <b class="my-5">{{packTwo.name}} </b>
+                <p style="display: inline; float:right">{{packTwo.price| currency:'$'}}</p>
+                <p class="my-4"> {{packTwo.description}} </p>
+                <p><i class="bi bi-clock-history"></i> 10 Days Delivery</p>
+              </div>
+            </mat-tab>
+            <mat-tab label="Premium"  *ngIf="x">
+              <div class="m-4">
+                <b class="my-5">{{packThree.name}} </b>
+                <p style="display: inline; float:right">{{packThree.price| currency:'$'}}</p>
+                <p class="my-4"> {{packThree.description}} </p>
+                <p><i class="bi bi-clock-history"></i> 10 Days Delivery</p>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+          <div>
+            <a class="fancy" href="#">
+              <span class="top-key"></span>
+              <span class="text">Proceed to payment</span>
+              <span class="bottom-key-1"></span>
+              <span class="bottom-key-2"></span>
+            </a>
+          </div>
+          
+        </div>
+        <div class="card mt-4 p-3" *ngIf="!displayReviewVar"  >
+          <h2 style="font-size: 17px;" class="mx-3">Review the gig</h2>
+            
+            <app-stars></app-stars>
+        </div>
+      </div>
+       
+   </div>
+
+</div>
+</div>
    
 
 
