@@ -14,7 +14,7 @@ import { PageDashComponent } from './dashboard/page-dash/page-dash.component';
 import { GigComponent } from './dashboard/gig/gig.component';
 import { GigAddComponent } from './dashboard/gig/gig-add/gig-add.component';
 
-// Import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,8 @@ import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-
 import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
 
 import { CollapseTextPipe } from '../collapse-text.pipe';
+import { StarsComponent } from './dashboard/stars/stars.component';
+import { ReviewService } from '../services/review.service';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatComponent } from './dashboard/chat/chat.component';
@@ -56,7 +58,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
     CollapseTextPipe,
       ChatComponent,
-      ListRoomComponent
+      ListRoomComponent,
+     StarsComponent
 
   ],
   imports: [
@@ -69,6 +72,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
     AngularEditorModule
   ],
-  providers:[]
+
+  providers: [ReviewService],
 })
 export class AccountModule { }

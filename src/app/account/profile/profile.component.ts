@@ -84,6 +84,7 @@ export class ProfileComponent  implements OnInit {
   arrayOfSkills!: any[];
   arrayOfEducation!: any[];
   arrayOfCertifications!: any[];
+  createdAt:any;
 
   id = localStorage.getItem('id')   //this is the user's id stored in localStorage
 
@@ -102,8 +103,9 @@ export class ProfileComponent  implements OnInit {
             skills:res.user.skills,
             education:res.user.education,
             certifications:res.user.certifications,
+            updatedAt:res.user.createdAt.slice(0,10),
           }
-
+          
           this.arrayOfLang =  res.user.languages;
           for(let i=0; i<this.arrayOfLang.length; i++) {
               this.langObj.name =   this.arrayOfLang[i].name;
@@ -221,12 +223,6 @@ displayFormAdd2(){
   this.operationLang=true;
 }
 
-
-
-
-
-
-
   languageStaticTable:language[] = []; //this is to make the data change without refreshing the page
   langObj:language = {
     name: '',
@@ -235,9 +231,6 @@ displayFormAdd2(){
     _id:''
   }
  
-
-
-
   addLang() {
 
     if(!this.valueForm2.valid){
@@ -257,13 +250,14 @@ displayFormAdd2(){
           this.langObj.level = this.valueForm2.value.level;
           this.langObj.userId = this.valueForm2.value.userId;
 
-         this.languageStaticTable.push( this.langObj);
-         this.langObj = {
-          name: '',
-          level:'',
-          userId : '',
-          _id:''
-        }
+          this.languageStaticTable.push( this.langObj);
+          this.langObj = {
+            name: '',
+            level:'',
+            userId : '',
+            _id:''
+          }
+          this.valueForm2.reset()
           console.log(res);
         }
       }
@@ -346,6 +340,7 @@ displayFormAdd2(){
             userId : '',
             _id:''
           }
+          this.valueForm3.reset()
         }
       }
     );
@@ -433,6 +428,7 @@ displayFormAdd2(){
             userId : '',
             _id:''
           }
+          this.valueForm4.reset()
         }
       }
     );
@@ -509,6 +505,7 @@ displayFormAdd2(){
           userId : '',
           _id:''
           }
+          this.valueForm5.reset()
         }
       }
     );
