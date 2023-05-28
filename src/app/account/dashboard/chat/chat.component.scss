@@ -1,0 +1,124 @@
+.chatbox {
+    width: 300px;
+    height: 400px;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+  }
+  
+  .chatbox-messages {
+    padding: 10px;
+  }
+  
+  .chatbox-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .chatbox-input input {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .chatbox-input button {
+    padding: 5px 10px;
+  }
+
+  .example-card {
+    max-width: 400px;
+  }
+  .container {
+    margin: 1rem;
+  }
+  
+  .list {
+    background-color: whitesmoke;
+    padding: 1rem;
+    overflow-y: scroll;
+    height: 300px;
+    scroll-behavior: smooth;
+  }
+  
+  .message {
+    margin: 0.5rem 0;
+    height: 2em;
+    display: flex;
+    align-items: flex-end;
+  
+    &__body {
+      height: 2em;
+      a {
+        border-radius: 5px;
+        padding: 0.5rem;
+        background-color: lightcoral;
+        color: whitesmoke;
+      }
+    }
+  
+    &__ts {
+      margin: 0.5rem;
+      height: 1em;
+      color: darkgrey;
+    }
+  
+    &.right {
+      flex-flow: row-reverse;
+    }
+  }
+  
+  .input {
+    width: 100%;
+    display: flex;
+    input {
+      width: 100%;
+    }
+  }
+  
+
+  .container {
+    margin: 1rem;
+  }
+  
+  .list {
+    background-color: whitesmoke;
+    padding: 1rem;
+    overflow-y: scroll;
+    height: 300px;
+    scroll-behavior: smooth;
+  }
+  
+  .message {
+    margin: 0.5rem 0;
+    height: 2em;
+    display: flex;
+    align-items: flex-end;
+  
+    &__body {
+      height: 2em;
+      a {
+        border-radius: 5px;
+        padding: 0.5rem;
+        background-color: lightcoral;
+        color: whitesmoke;
+      }
+    }
+  
+    &__ts {
+      margin: 0.5rem;
+      height: 1em;
+      color: darkgrey;
+    }
+  
+    &.right {
+      flex-flow: row-reverse;
+    }
+  }
+  
+  .input {
+    width: 100%;
+    display: flex;
+    input {
+      width: 100%;
+    }
+  }
+  

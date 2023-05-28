@@ -14,6 +14,8 @@ import { GigListComponent } from './dashboard/gig/gig-list/gig-list.component';
 import { HomeGigsComponent } from './dashboard/gig/home-gigs/home-gigs.component';
 import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-gig.component';
 import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
+import { ChatComponent } from './dashboard/chat/chat.component';
+import { ListRoomComponent } from './dashboard/list-room/list-room.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,8 @@ const routes: Routes = [
           component:DashboardComponent,
           canActivate:[AuthGuard],
           children:[
+            { path: 'room/:id', component: ChatComponent },
+            { path: 'room', component: ListRoomComponent },
              {
                path:"",
                component:PageDashComponent,

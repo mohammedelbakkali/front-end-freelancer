@@ -1,46 +1,54 @@
 
 
-<div class="container">
+<div class="container-fluid">
       <div class="row">
-           <div class="col-md-2"></div>
-           <div class="col-md-6">
-            <table class="table">
+           <div class="col-md-1"></div>
+           <div class="col-md-10">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col"> <button mat-button><mat-icon>remove_red_eye</mat-icon><span>Vus</span> </button></th>
+                  <th scope="col"><button mat-button>	<mat-icon>redo</mat-icon><span>Status</span> </button></th>
+                  <th scope="col">	 <button mat-button><mat-icon>access_time</mat-icon> <span>Date</span></button>  </th>
+                  <th scope="col"> <button mat-button><mat-icon>settings</mat-icon>
+                    <span>Operation</span></button></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+              <tbody class="table-group-divider">
+
+                <tr  *ngFor="let gig of gigTable">
+                  <th scope="row" >{{gig.range}}</th>
+                  <td>{{ gig.gittitle | collapseText:10 }}</td>
+                  <td>0</td>
+                  <td>{{gig.status }}</td>
+                  <td>{{gig.createdAt }}</td>
+                  <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                    	<mat-icon>create</mat-icon>
+                      <span>EDIT</span>
+                    </button>
+                    <button mat-menu-item >
+                      <mat-icon>delete</mat-icon>
+
+
+                      <span>DELETE</span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>pause_circle_outline</mat-icon>
+                      <span>PAUSE</span>
+                    </button>
+                  </mat-menu></td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+             
               </tbody>
             </table>
            </div>
-           <div class="col-md-2"></div>
+           <div class="col-md-1"></div>
       </div>
 </div>
 
-
-  <div *ngFor="let gig of gigTable">
-     <tr>{{gig.gittitle }}</tr>
-     <tr>{{gig.description }}</tr>
-     <tr>{{gig.status }}</tr>
-  </div>

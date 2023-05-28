@@ -1,0 +1,14 @@
+<p>
+    chat-room-list works!
+  </p>
+  
+  <ng-container *ngIf="roomList$ | async as roomList">
+    <div class="list">
+      <div class="room" *ngFor="let room of roomList" (click)="navigateTo(room.id)">
+        {{room.name}}
+        <div class="member" *ngFor="let member of room.members">
+          <img [src]="member.image">
+        </div>
+      </div>
+    </div>
+  </ng-container>

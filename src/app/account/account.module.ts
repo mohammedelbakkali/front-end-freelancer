@@ -29,7 +29,11 @@ import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-
 
 import { CollapseTextPipe } from '../collapse-text.pipe';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ChatComponent } from './dashboard/chat/chat.component';
+import { ListRoomComponent } from './dashboard/list-room/list-room.component';
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 
 
@@ -50,7 +54,9 @@ import { CollapseTextPipe } from '../collapse-text.pipe';
 
     GetBySubCategoryComponent,
 
-    CollapseTextPipe
+    CollapseTextPipe,
+      ChatComponent,
+      ListRoomComponent
 
   ],
   imports: [
@@ -62,6 +68,7 @@ import { CollapseTextPipe } from '../collapse-text.pipe';
  
 
     AngularEditorModule
-  ]
+  ],
+  providers:[]
 })
 export class AccountModule { }

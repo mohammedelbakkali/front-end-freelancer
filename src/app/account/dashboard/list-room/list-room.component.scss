@@ -1,0 +1,36 @@
+.list {
+    box-sizing: border-box;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  .room {
+    padding: 1rem;
+    background-color: steelblue;
+    color: whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-shadow: 5px 5px 5px lightgrey;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  .room:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 10px lightslategrey;
+  }
+  
+  .member {
+    margin-left: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  img {
+    width: 100%;
+  }
+  

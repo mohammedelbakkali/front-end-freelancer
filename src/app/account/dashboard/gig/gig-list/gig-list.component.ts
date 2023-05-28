@@ -81,8 +81,10 @@ export class GigListComponent {
                           gittitle : res.user.posts[i].gigtitle,
                           description : res.user.posts[i].description,
                           status : res.user.posts[i].status,
-
+                          createdAt:res.user.posts[i].createdAt.slice(0,10),
+                          range:i+1
                       }
+                      // console.log(res.user.posts[i].createdAt.slice(0,10))
                       this.gigTable.push(a);
                        
               }

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="list" #scrollMe>
+      <ng-container *ngIf="chat">
+        <div *ngFor="let message of chat.data">
+          <div
+            class="message"
+            [ngClass]="message.sendUser === currentUser ? 'right' : 'left' "
+          >
+            <div class="message__body">
+              <a>
+                {{message.text}}
+              </a>
+            </div>
+            <div class="message__ts">
+              <small> {{message.ts| date : 'HH:mm'}} </small>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <form [formGroup]="form">
+      <div class="input">
+        
+
+           <input [(ngModel)]="message" placeholder="Enter message" formControlName="input" />
+            <!-- <button (click)="sendMessage()">Send</button> -->
+        <!-- <input type="date" formControlName="input" /> -->
+        <button (click)="onSubmit()">Submit</button>
+      </div>
+    </form>
+  </div>
+  

@@ -19,6 +19,13 @@ import { SinginComponent } from './auth/singin/singin.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+
+const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +49,11 @@ import { ToastrModule, TOAST_CONFIG } from 'ngx-toastr';
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    SocketIoModule,
+    SocketIoModule.forRoot(config)
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

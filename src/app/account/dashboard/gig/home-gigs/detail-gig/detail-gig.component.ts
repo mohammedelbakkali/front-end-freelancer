@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GigService } from 'src/app/services/gig.service';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { ChatService } from '../../../chat/chat.service';
 
 @Component({
   selector: 'app-detail-gig',
@@ -16,9 +17,36 @@ export class DetailGigComponent implements OnInit {
     private route: ActivatedRoute , 
     private  gigservice: GigService,
     private  userService: UserService,
+    private serviceChat:ChatService,
+    private router: Router
     ) { 
   
   }
+
+  idUser = localStorage.getItem('id');
+
+  CreateRoom(){
+    const  obj = {
+      userRecepteur:this.idOfUserGig,
+      userEmetteur:this.idUser
+    }
+    this.serviceChat.createRoom(obj).subscribe({
+       next:(res)=>{
+           console.log(res);
+           localStorage.setItem('roomId',res._id);
+           this.navigateTo()
+       },
+       error:(err)=>{
+           console.log(err);  
+       }
+    })
+ }
+
+ navigateTo(){
+  this.router.navigate(['/account/dashboard/room']);
+}
+
+  idOfUserGig!:any;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -59,6 +87,8 @@ export class DetailGigComponent implements OnInit {
 
                }
 
+               this.idOfUserGig = res.userId._id;
+
                this.contentHtmlDes=res.description;
 
               //  console.log(this.gig.packs)
@@ -70,7 +100,7 @@ export class DetailGigComponent implements OnInit {
      })
   }
   
-  
+ 
 
 
   
