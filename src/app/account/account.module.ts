@@ -28,6 +28,8 @@ import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-
 import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
 
 import { CollapseTextPipe } from '../collapse-text.pipe';
+import { StarsComponent } from './dashboard/stars/stars.component';
+import { ReviewService } from '../services/review.service';
 
 
 
@@ -50,7 +52,8 @@ import { CollapseTextPipe } from '../collapse-text.pipe';
 
     GetBySubCategoryComponent,
 
-    CollapseTextPipe
+    CollapseTextPipe,
+     StarsComponent
 
   ],
   imports: [
@@ -62,6 +65,7 @@ import { CollapseTextPipe } from '../collapse-text.pipe';
  
 
     AngularEditorModule
-  ]
+  ],
+  providers: [ReviewService],
 })
 export class AccountModule { }
