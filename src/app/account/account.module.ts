@@ -36,7 +36,8 @@ import { ChatComponent } from './dashboard/chat/chat.component';
 import { ListRoomComponent } from './dashboard/list-room/list-room.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
-
+import { ScrollToModule } from 'ng2-scroll-to';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     CollapseTextPipe,
       ChatComponent,
       ListRoomComponent,
-     StarsComponent
+     StarsComponent,
+     WishlistComponent
 
   ],
   imports: [
@@ -68,8 +70,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MaterialExampleModule,
     ReactiveFormsModule,
     MatIconModule,
- 
-
+    ScrollToModule.forRoot(),
     AngularEditorModule
   ],
 

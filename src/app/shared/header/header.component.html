@@ -37,9 +37,9 @@
         [ngClass]="value ? 'bi-heart ': 'bi-heart-fill'" 
         (mouseover)="value=false" 
         (mouseout)="value=true" 
+        routerLink="/account/wishlist"
       ></i>
       <a routerLink="" *ngIf="isAuth" >Orders</a>
-      <a routerLink="" *ngIf="isAuth" >Switch to Selling</a>
      
       <img src="../../../assets/pics/profilepic.jpeg" class="profilepic" [matMenuTriggerFor]="menu" *ngIf="isAuth">
       <mat-menu #menu="matMenu" class="menu">

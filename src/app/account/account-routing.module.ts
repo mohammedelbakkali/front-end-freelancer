@@ -16,6 +16,7 @@ import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-
 import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
 import { ChatComponent } from './dashboard/chat/chat.component';
 import { ListRoomComponent } from './dashboard/list-room/list-room.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,11 @@ const routes: Routes = [
         path:"sub/:id",
         component:GetBySubCategoryComponent
      },
+     {
+      path:"wishlist",
+      component:WishlistComponent
+     },
+
         {
           path: 'profile', component:ProfileComponent,canActivate:[AuthGuard]
         },

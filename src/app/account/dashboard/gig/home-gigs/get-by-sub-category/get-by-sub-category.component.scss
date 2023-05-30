@@ -1,0 +1,22 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .example-spacer {
+      flex: 1 1 auto;
+    }
+  
+  .userpic{
+    border-radius: 60%;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+  }
+  .username{
+    display: inline-block;
+  }
+  
+  .chip{
+    margin-right: 3px;
+    margin-bottom: 10px;
+  }

@@ -1,13 +1,56 @@
+$baseColor : #32438f;
+
+body{
+  .quote{
+    color: $baseColor;
+    position:absolute;
+    top: 50%;
+    left: 30%;
+    width: 700px;
+    font-weight: 700;
+    font-size: 50px;
+    text-align: center;
+  }
+  h2{
+    font-weight: 700;
+    color: rgb(60, 59, 59);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    color: rgb(var(--bs-tertiary-color-rgb));
-  }
+
   
   
   /* CUSTOMIZE THE CAROUSEL

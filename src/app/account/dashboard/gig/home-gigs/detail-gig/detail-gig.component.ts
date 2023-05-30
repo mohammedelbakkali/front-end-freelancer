@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GigService } from 'src/app/services/gig.service';
-
-import { User } from 'src/app/models/user.model';
+import { loadStripe} from '@stripe/stripe-js'
 import { UserService } from 'src/app/services/user.service';
 import { ChatService } from '../../../chat/chat.service';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -26,12 +26,17 @@ export class DetailGigComponent implements OnInit {
     private  gigservice: GigService,
     private  userService: UserService,
     private serviceChat:ChatService,
-    private router: Router
+    private router: Router,
+    private elementRef: ElementRef,
+    private http:HttpClient
     ) { 
   
   }
 
-    
+  
+ 
+
+  
 
   idUser = localStorage.getItem('id');
 
@@ -113,8 +118,8 @@ export class DetailGigComponent implements OnInit {
                 else{
                   this.x= true
                   this.packOne =this.gig.packs[0]
-                  this.packTwo = this.gig.packs[1]
-                  this.packThree = this.gig.packs[2]
+                  this.packTwo = this.gig.packs[2]
+                  this.packThree = this.gig.packs[1]
                 }
                 this.contentHtmlDes=res.description
               
@@ -154,7 +159,18 @@ export class DetailGigComponent implements OnInit {
     this.reviewsTotal = this.summ / this.reviews.length 
   }
   
-
+// ===============STRIPE==================================================
+  onCheckout(product: any):void{
+   
+    this.http.post('http://localhost:4000/checkout',{
+      order: product
+    }).subscribe(async(res:any)=>{
+      let stripe =await loadStripe('pk_test_51ND7qgBU1CNygU20iQvLfsJmH5xbmW1nQ97TuNaLSQP39i7sMEKcE90TcYLXdcy8SgswyHxivezzKylot8C2lfiN00eaIRCVmF')
+      stripe?.redirectToCheckout({ 
+        sessionId: res.id
+      })
+    })
+  }
 
   
 }

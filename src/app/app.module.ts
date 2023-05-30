@@ -13,7 +13,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { ComponentNameComponent } from './component-name/component-name.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SinginComponent } from './auth/singin/singin.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +31,6 @@ const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
     HeaderComponent,
     PageNotFoundComponent,
     HomeComponent,
-    ComponentNameComponent,
     SignupComponent,
     SinginComponent
   ],

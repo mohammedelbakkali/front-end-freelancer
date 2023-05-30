@@ -34,14 +34,14 @@ getSubCategoryById(){
           // console.log(res[i])
                  var a = {
                    
-                    gigtitle : res.posts[i].gigtitle,
+                     gigtitle : res.posts[i].gigtitle,
                      description : res.posts[i].description,
                      status : res.posts[i].status,
                      photo:"http://localhost:4000/"+res.posts[i].photo,
                      CategoryId:res.posts[i].CategoryId.name,
                      nameUser:res.posts[i].userId.fullname,
                      _id:res.posts[i]._id,
-                     subCategoryId:res.posts[i].subCategoryId.name
+                     subCategoryId:res.posts[i].subCategoryId.name,
 
 
                  }

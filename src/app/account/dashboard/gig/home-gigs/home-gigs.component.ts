@@ -4,6 +4,7 @@ import { Category } from 'src/app/models/category.model';
 import { Gig } from 'src/app/models/gig.model';
 import { subCategory } from 'src/app/models/subCategory.model';
 import { GigService } from 'src/app/services/gig.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 // ph pe pes
 @Component({
   selector: 'app-home-gigs',
@@ -12,7 +13,11 @@ import { GigService } from 'src/app/services/gig.service';
 })
 export class HomeGigsComponent {
 
-   constructor(private gigService:GigService,private  gigservice: GigService , private router: Router){
+   constructor(
+    private gigService:GigService,
+    private  gigservice: GigService, 
+    private router: Router,
+    private wishlistService: WishlistService){
     this.getCategory();
     this.gitAllgigs();
    }
@@ -103,6 +108,7 @@ export class HomeGigsComponent {
                        category:res[i].CategoryId.name,
                        subCategory:res[i].subCategoryId.name,
                        nameUser:res[i].userId.fullname,
+                       usernameUser:res[i].userId.username,
                        _id:res[i]._id,
                        namePack : res[i].packId[0].name,
                        pricePack : res[i].packId[0].price
@@ -137,6 +143,14 @@ gitPageBySubCategory(idSubCategory: string) {
   this.router.navigate(['/account/sub', idSubCategory]);
 }
 
+id = localStorage.getItem('id')
 
- 
+addWishlist(gig:any){
+  const a={
+    gig: gig,
+    userId: this.id
+  }
+  console.log(a)
+  this.wishlistService.addWishlist(a).subscribe();
+}
 }
