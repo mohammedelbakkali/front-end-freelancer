@@ -15,6 +15,7 @@
                  <form  [formGroup]="firstFormGroup" (submit)="setData()"  method="post" enctype="multipart/form-data" >
                      <ng-template matStepLabel>Overview</ng-template>
                             <mat-card>
+
                                <mat-card-content>
                                  <mat-card-title>Gig title</mat-card-title>
                                  <mat-card-subtitle>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.
@@ -86,7 +87,7 @@
                       </mat-card-content>
                     </mat-card>
                   <div style="  display: flex ;   justify-content: end;">
-                    <button mat-raised-button style="background-color:#4361ee; color :white;" type="submit" matStepperNext class="mt-3" align="end">Next Step</button>
+                    <button mat-raised-button style="background-color:#4361ee; color :white;" type="submit" matStepperNext class="mt-3" align="end" >Next Step</button>
                   </div>
                 </form>
 
@@ -117,14 +118,14 @@
                                   <div class="row_form">                          
                                       <mat-form-field appearance="outline" class="example-full-width">
                                         <mat-label>Package name</mat-label>
-                                        <input matInput formControlName="nameBASIC" placeholder="Name your package"> 
+                                        <input matInput formControlName="nameBASIC" placeholder="Name your package" required> 
                                       </mat-form-field >
                                  </div>
 
                                  <div class="row_form">                                
                               <mat-form-field appearance="outline" class="example-full-width">
                                   <mat-label>Description</mat-label>
-                                  <textarea matInput formControlName="descriptionBASIC" placeholder="Describe the details of your offering"></textarea>
+                                  <textarea matInput formControlName="descriptionBASIC" placeholder="Describe the details of your offering" required></textarea>
                                 </mat-form-field>
                               </div>
                               <div class="row_form">  
@@ -227,22 +228,26 @@
 
                            
                             </mat-tab-group>
-                            <button mat-button matStepperNext class="mt-3" type="submit" align="end">Save</button>
+                          
+
+                            <div style="  display: flex ;   justify-content: end;">
+                              <button mat-raised-button style="background-color:#4361ee; color :white;" type="submit" matStepperNext class="mt-3" align="end">Next Step</button>
+                            </div>
 
  
- </form>
+
                            
-                              
+       </form>                        
 
                       </mat-card-content>
                       
                     </mat-card>
                    
 
-                    <div>
+                    <!-- <div>
                       <button mat-button matStepperPrevious class="mt-3" align="end">Back</button>
                       <button mat-button matStepperNext class="mt-3" align="end">Next</button>
-                    </div>
+                    </div> -->
                 
 
               </mat-step>
@@ -260,20 +265,22 @@
                     <hr class="mt-5 mb-4">
 
                                                  
-                             <div >
-                               <button style="float: right; background-color:#4361ee; color :white;" mat-raised-button  (click)="addFAQElement()">Add FAQ</button>
+                             <!-- <div >
+                               <button style="float: right; background-color:#4361ee; color :white;" mat-raised-button  (click)="addFaq()">Add FAQ</button>
                                <mat-card-title class="mb-4">Frequently Asked Questions</mat-card-title>
-                             </div>
+                             </div> -->
 
                     <!-- <mat-accordion class=" mt-5" multi *ngFor="let faq of faqs"> -->
 
                                                               <!-- FAQ -->
-                      <!-- <mat-accordion class=" mt-5">
+
+                                                           
+                      <mat-accordion class=" mt-5" *ngFor="let faq of ArrayFaq">
         
-                      <mat-expansion-panel class="mt-3">
+                      <mat-expansion-panel class="mt-3" >
                         <mat-expansion-panel-header>
                           <mat-panel-title>
-                         1   :    Question And Response 
+                            {{faq.num}}:    Question And Response 
                           </mat-panel-title>
                           <mat-panel-description>
                             FAQ
@@ -289,19 +296,17 @@
                        <div class="row_form">
                         <mat-form-field appearance="outline" style="width: 100%;">
                           <mat-label>Question</mat-label>
-                          <input matInput formControlName="questionfaq">
+                          <input matInput formControlName={{faq.inptQ}}>
                                                 
                         </mat-form-field>
                     
                         <mat-form-field appearance="outline" style="width: 100%;">
                           <mat-label>Response</mat-label>
-                          <input matInput formControlName="responsefaq">
+                          <input matInput formControlName={{faq.inptR}}>
                         </mat-form-field>
                        </div>
 
-                       <div class="row_form">
 
-                       </div>
 
                     
 
@@ -309,12 +314,11 @@
   
                       <mat-divider></mat-divider>
   
-                      </mat-accordion> -->
+                      </mat-accordion>
 
-                  <div>
-                      <button mat-button matStepperNext submit>Next</button>
-
-                  </div>
+                      <div style="  display: flex ;   justify-content: end;">
+                        <button mat-raised-button style="background-color:#4361ee; color :white;" type="submit" matStepperNext class="mt-3" align="end">Next Step</button>
+                      </div>
                 </form>
                 </mat-step>
                 <!-- ========================================================================= -->
@@ -326,7 +330,7 @@
                 <ng-template matStepLabel>Save the gig</ng-template>
                 <p>You are now done.</p>
                 <div>
-                  <button mat-button matStepperPrevious>Save</button>
+                  <a routerLink="/account"> <button mat-button matStepperPrevious>Save</button></a>
                   <!-- <button mat-button matStepperPrevious>Back</button>
                   <button mat-button (click)="stepper.reset()">Reset</button> -->
                 </div>
@@ -345,4 +349,4 @@
     </div>
 </div>
 
-<mat-icon>home</mat-icon>
+

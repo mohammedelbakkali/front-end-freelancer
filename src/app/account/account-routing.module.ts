@@ -16,6 +16,7 @@ import { DetailGigComponent } from './dashboard/gig/home-gigs/detail-gig/detail-
 import { GetBySubCategoryComponent } from './dashboard/gig/home-gigs/get-by-sub-category/get-by-sub-category.component';
 import { ChatComponent } from './dashboard/chat/chat.component';
 import { ListRoomComponent } from './dashboard/list-room/list-room.component';
+import { UpdateGigComponent } from './dashboard/gig/manage-gigs/update-gig/update-gig.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,10 @@ const routes: Routes = [
                path:"add_gig",
                component:GigAddComponent
            
+            },
+            {
+              path:"update_gig/:id",
+              component:UpdateGigComponent
             }
               
             ]

@@ -34,6 +34,7 @@ import { ReviewService } from '../services/review.service';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatComponent } from './dashboard/chat/chat.component';
 import { ListRoomComponent } from './dashboard/list-room/list-room.component';
+import { UpdateGigComponent } from './dashboard/gig/manage-gigs/update-gig/update-gig.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -59,7 +60,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     CollapseTextPipe,
       ChatComponent,
       ListRoomComponent,
-     StarsComponent
+     StarsComponent,
+     UpdateGigComponent
 
   ],
   imports: [

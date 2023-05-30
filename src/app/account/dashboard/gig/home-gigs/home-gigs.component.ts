@@ -94,7 +94,8 @@ export class HomeGigsComponent {
         
            for(let i = 0 ; i < res.length ; i++){
 
-            console.log(res[i])
+            console.log( res[i].packId[0].name)
+            
                    var a = {
                        gigtitle : res[i].gigtitle,
                        description : res[i].description,
@@ -107,7 +108,7 @@ export class HomeGigsComponent {
                        namePack : res[i].packId[0].name,
                        pricePack : res[i].packId[0].price
                       //  packId:res[i].userId.packId[0].price
-
+                
 
 
                    }

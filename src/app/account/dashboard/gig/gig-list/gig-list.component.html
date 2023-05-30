@@ -28,10 +28,10 @@
                     <mat-icon>keyboard_arrow_down</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item>
-                    	<mat-icon>create</mat-icon>
-                      <span>EDIT</span>
-                    </button>
+                   
+                    	
+                     <a [routerLink]="['/account/dashboard/manage_gigs/update_gig',gig.id]"> <button mat-menu-item><mat-icon>create</mat-icon>  <span>EDIT</span></button></a>
+                    
                     <button mat-menu-item >
                       <mat-icon>delete</mat-icon>
 

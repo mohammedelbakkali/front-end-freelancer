@@ -8,36 +8,8 @@ import { ChatService } from '../chat/chat.service';
   styleUrls: ['./list-room.component.scss']
 })
 export class ListRoomComponent {
-  roomList$ = of(ROOM_LIST);
-  roomId!:any
-  constructor(private router: Router , private serviceChat:ChatService) {
-    this.roomId = localStorage.getItem('roomId');
-
-  }
-
-  ngOnInit() {
-    this.getRooms();
-  }
   
-  getRooms(){
-
-     this.serviceChat.getRooms(this.roomId).subscribe({
-         next:(res)=>{
-          console.log(res);
-         },
-         error:()=>{}
-     })
-  }
-
-  navigateTo(id: string) {
-    this.router.navigate(['/account/dashboard/room', id]);
-  }
-  
-
-}
-
-
-const ROOM_LIST = [
+ ROOM_LIST = [
   {
     id: '0',
     name: 'Room 1',
@@ -104,22 +76,43 @@ const ROOM_LIST = [
         image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
       }
     ]
+  },
+  {
+    id: '5',
+    name: 'Room 4',
+    members: [
+      {
+        id: '1',
+        name: 'Collin',
+        image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+      }
+    ]
+  },
+  {
+    id: '6',
+    name: 'Room 4',
+    members: [
+      {
+        id: '1',
+        name: 'Collin',
+        image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+      }
+    ]
+  }
+  ,
+  {
+    id: '6',
+    name: 'Room 4',
+    members: [
+      {
+        id: '1',
+        name: 'Collin',
+        image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+      }
+    ]
   }
 ];
-
-export class Room {
-  id!: string;
-  name!: string;
-  members!: Member[];
-}
-
-export class Member {
-  id!: string;
-  name!: string;
-  image!: string;
-}
-
-const MEMBER_INFO = [
+ MEMBER_INFO = [
   {
     Id: 1,
     Name: 'Collin',
@@ -141,3 +134,105 @@ const MEMBER_INFO = [
     Path: 'https://image.flaticon.com/icons/png/512/219/219970.png'
   }
 ];
+
+
+  roomList$ = of(this.ROOM_LIST);
+  idUser!:any
+  constructor(private router: Router , private serviceChat:ChatService) {
+    this.idUser = localStorage.getItem('id');
+
+  }
+
+  ngOnInit() {
+    this.getRooms();
+  }
+
+  ArrayRooms:any = []
+  
+  getRooms(){
+
+     this.serviceChat.getUserData(this.idUser).subscribe({
+         next:(res)=>{
+           var obj ={
+            id: '',
+            name: '',
+            members:[
+              {
+                id: '',
+                name: '',
+                image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+              },
+              {
+                id: '',
+                name: '',
+                image: ''
+              }
+            ]
+           }
+          
+          for(var i=0; i<res.rooms.length; i++){
+            console.log(res.rooms[i].userEmetteur)
+                obj = {
+                  id: res.rooms[i]._id,
+                  name: res.rooms[i].userRecepteur.fullname
+                  , members:[
+                    {
+                      id: res.rooms[i].userRecepteur._id,
+                      name: res.rooms[i].userRecepteur.fullname,
+                      image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+                    },
+                    {
+                      id: res.rooms[i].userEmetteur._id,
+                      name: res.rooms[i].userEmetteur._id,
+                      image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+                    }
+                  ]
+                  
+                }
+
+                
+                this.ROOM_LIST.push(obj);
+                obj ={
+                  id: '',
+                  name: '',
+                  members:[
+                    {
+                      id: '',
+                      name: '',
+                      image: 'https://image.flaticon.com/icons/png/512/236/236831.png'
+                    },
+                    {
+                      id: '',
+                      name: '',
+                      image: ''
+                    }
+                  ]
+                 }
+          }
+         
+         },
+         error:()=>{}
+     })
+  }
+
+  navigateTo(id: string) {
+    this.router.navigate(['/account/dashboard/room', id]);
+  }
+  
+
+}
+
+
+
+export class Room {
+  id!: string;
+  name!: string;
+  members!: Member[];
+}
+
+export class Member {
+  id!: string;
+  name!: string;
+  image!: string;
+}
+

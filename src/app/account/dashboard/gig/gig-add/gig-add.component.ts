@@ -76,6 +76,40 @@ export class GigAddComponent  implements OnInit{
      faqs:FAQ[] = [
     ];
 
+    ArrayFaq:any[] = []
+
+    nombreFaq = 1;
+
+
+    createFaq(){
+      var faq;
+            for(let i = 0 ; i < 3 ; i++){
+               faq ={
+                num:i+1,
+                question: "",
+                response: "",
+                inptQ:`faqQ${i}`,
+                inptR:`faqR${i}`
+              }
+            
+              this.ArrayFaq.push(faq);
+            }
+
+           
+            console.log(this.ArrayFaq)
+            faq={}
+    }
+
+    addFaq(){
+      if(this.numFAQ<5){
+           this.nombreFaq = this.nombreFaq +1;
+      }
+   
+      console.log(this.nombreFaq)
+      
+
+    }
+
 
 
     addFAQElement(){
@@ -97,6 +131,7 @@ export class GigAddComponent  implements OnInit{
     
   ngOnInit(): void {
     this.getCategory();
+    this.createFaq();
     this.firstFormGroup = this._formBuilder.group({
       gigtitle: ['', Validators.required],
       category: ['', Validators.required],
@@ -111,9 +146,13 @@ export class GigAddComponent  implements OnInit{
 
 
   this.FormGroup3 = this._formBuilder.group({
-    questionfaq:"",
-    responsefaq:"",
-    htmlContent:""
+    htmlContent:"",
+    faqQ0:"",
+    faqQ1:"",
+    faqQ2:"",
+    faqR0:"",
+    faqR1:"",
+    faqR2:"",
 
   });
 
@@ -155,7 +194,54 @@ export class GigAddComponent  implements OnInit{
           console.log(err);
         }
       })
-      
+
+      console.log(this.FormGroup3.value)    
+         var objFaq1 = {
+          question:this.FormGroup3.value.faqQ0,
+          response:this.FormGroup3.value.faqR0,
+          postId:this.postId
+         }
+
+         var objFaq2 = {
+          question:this.FormGroup3.value.faqQ1,
+          response:this.FormGroup3.value.faqR1,
+          postId:this.postId
+         }
+
+         var objFaq3 = {
+          question:this.FormGroup3.value.faqQ2,
+          response:this.FormGroup3.value.faqR2,
+          postId:this.postId
+         }
+
+         this.gigService.addFaq(objFaq1).subscribe({
+          next:(res)=>{
+            console.log(res);
+          },
+          error:(err)=>{
+            console.log(err);
+          }
+        })
+
+        
+        this.gigService.addFaq(objFaq2).subscribe({
+          next:(res)=>{
+            console.log(res);
+          },
+          error:(err)=>{
+            console.log(err);
+          }
+        })
+
+        
+        this.gigService.addFaq(objFaq3).subscribe({
+          next:(res)=>{
+            console.log(res);
+          },
+          error:(err)=>{
+            console.log(err);
+          }
+        })
     
      }
   }

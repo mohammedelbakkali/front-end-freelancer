@@ -1,0 +1,56 @@
+<div class="container">
+
+       <div class="row">
+
+           <div class="col-ms-2"></div>
+           <div class="col-ms-8">
+            <form  [formGroup]="firstFormGroup" method="post" enctype="multipart/form-data" >
+                <ng-template matStepLabel>Overview</ng-template>
+                       <mat-card>
+            
+                          <mat-card-content>
+                            <mat-card-title>Gig title</mat-card-title>
+                            <mat-card-subtitle>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.
+                             you can only use 80 characters
+                            </mat-card-subtitle>
+                             <div class="row_form">                          
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                 <mat-label >Gig title</mat-label>
+                                 <textarea matInput [(ngModel)]="gigtitle" formControlName="gigtitle" #message maxlength="100"></textarea>
+                                 <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
+                                </mat-form-field>
+                             </div>
+                                          <hr>                     
+                             <mat-card-title>Category</mat-card-title>
+                             <mat-card-subtitle>Choose the category and sub-category most suitable for your Gig.</mat-card-subtitle>
+                              <div class="row_form">
+                                  <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Category</mat-label>
+                                     <mat-select [value]="category" formControlName="category" [(ngModel)]="value" name="value" (ngModelChange)="getOnecategory(value)">
+                                         <mat-option  *ngFor="let cat of categoryTable" value ={{cat._id}}>{{cat.name}}</mat-option>
+                                         
+                                     </mat-select>
+                                   </mat-form-field>
+                                   <!-- {{value}} -->
+            
+                   <mat-form-field appearance="outline" class="example-full-width">
+                     <mat-label> Subcategory</mat-label>
+                   <mat-select formControlName="subCategory" >
+                 <mat-option *ngFor="let subCat of subCategoryTable" value ={{subCat._id}}>{{subCat.name}}</mat-option>
+                   </mat-select>
+                   </mat-form-field>
+                 </div> 
+            
+                       <hr>
+        
+            
+                 </mat-card-content>
+               </mat-card>
+             <div style="  display: flex ;   justify-content: end;">
+               <button mat-raised-button style="background-color:#4361ee; color :white;" type="submit"  class="mt-3" align="end" >Next Step</button>
+             </div>
+            </form>
+           </div>
+           <div class="col-ms-2"></div>
+       </div>
+</div>

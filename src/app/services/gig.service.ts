@@ -74,5 +74,23 @@ export class GigService {
       }
 
 
+      addFaq(data:any):Observable<any>{
+          return this._http.post("http://localhost:4000/faq",data);
+      }
+
+
+      // Update : 
+       updateGig(data:any , id:any):Observable<any>{
+           return this._http.patch(`http://localhost:4000/post/${id}`,data);
+       }
+
+       updatePqck(data:any , id:any):Observable<any>{
+        return this._http.patch(`http://localhost:4000/pack/${id}`,data);
+      }
+
+
+
+
+
 
 }

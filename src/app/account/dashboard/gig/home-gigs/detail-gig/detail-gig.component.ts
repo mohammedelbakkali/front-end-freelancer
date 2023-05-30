@@ -36,10 +36,26 @@ export class DetailGigComponent implements OnInit {
   idUser = localStorage.getItem('id');
 
   CreateRoom(){
+    const  obj1 = {
+      userId:this.idOfUserGig,
+      friend:this.idUser
+    }
+       
+    this.serviceChat.addFriend(obj1).subscribe({
+         next :(res)=>{
+            
+         },
+         error :(err)=>{
+           
+         }
+    })
+
     const  obj = {
       userRecepteur:this.idOfUserGig,
       userEmetteur:this.idUser
     }
+
+
     this.serviceChat.createRoom(obj).subscribe({
        next:(res)=>{
            console.log(res);
@@ -79,11 +95,14 @@ export class DetailGigComponent implements OnInit {
   contentHtmlDes!:any;
   reviews:any[]=[];
   rating:any[]=[];
+  faqArray:any[]=[];
   getOneGig(){
+    var faq;
      this.gigservice.getOneGigById(String(this.itemId)).subscribe({
            next :(res)=>{
-
-               console.log(res)
+       
+               console.log(res.Faqs[0].question)
+               faq = res.Faqs;
                this.gig  = {
                 gigtitle:res.gigtitle,
                 Category:res.CategoryId.name,
@@ -101,6 +120,24 @@ export class DetailGigComponent implements OnInit {
                 userId:res.userId
                
                }
+
+               var obj;
+
+               for(let i = 0 ; i <res.Faqs.length; i++) {
+                if(!res.Faqs.response){
+                  res.Faqs.response="n'existe pas";
+                }
+                    obj = {
+                      question:res.Faqs[i].question,
+                      response:res.Faqs[i].response,  
+                    }
+
+                    this.faqArray.push(obj)
+               }
+
+               console.log(this.faqArray)
+
+
 
                this.idOfUserGig = res.userId._id;
 

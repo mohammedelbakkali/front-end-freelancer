@@ -22,8 +22,12 @@ export class ChatService {
       return this._http.post("http://localhost:4000/room",data);
   }
 
-  getRooms(idRoom:any):Observable<any>{
-     return this._http.get(`http://localhost:4000/${idRoom}`);
+  getUserData(userId:any):Observable<any>{
+     return this._http.get(`http://localhost:4000/users/getuser/${userId}`);
+  }
+
+  addFriend(userId:any):Observable<any>{
+      return this._http.post(`http://localhost:4000/friends`,userId)
   }
 
 }
